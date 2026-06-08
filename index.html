@@ -3,1487 +3,1653 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MASLD 임상진료지침 2024 — 한글 상세 요약</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>MASLD 2024 EASL-EASD-EASO 가이드라인</title>
 <style>
-:root {
-  --navy:    #0B2447;
-  --navy2:   #163172;
-  --teal:    #1B9C85;
-  --teal2:   #0D7264;
-  --sky:     #2196F3;
-  --amber:   #F5A623;
-  --red:     #E53935;
-  --green:   #2E7D32;
-  --purple:  #6A1B9A;
-  --coral:   #E64A19;
-  --gray1:   #F5F7FA;
-  --gray2:   #E8ECF0;
-  --gray3:   #BDC3C7;
-  --gray4:   #7F8C8D;
-  --text:    #1A2332;
-  --text2:   #4A5568;
-  --white:   #FFFFFF;
-  --shadow:  0 2px 12px rgba(11,36,71,.10);
-  --shadow2: 0 4px 24px rgba(11,36,71,.14);
-  --r:       8px;
-  --r2:      12px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 68px; }
-body {
-  font-family: 'Noto Sans KR', 'IBM Plex Sans', sans-serif;
-  background: var(--gray1);
-  color: var(--text);
-  font-size: 15px;
-  line-height: 1.75;
-}
+  :root {
+    --bg: #f6f8fa;
+    --surface: #ffffff;
+    --surface2: #f0f2f5;
+    --border: #d0d7de;
+    --accent: #0969da;
+    --accent2: #0550ae;
+    --green: #1a7f37;
+    --yellow: #9a6700;
+    --red: #cf222e;
+    --orange: #bc4c00;
+    --text: #1f2328;
+    --text2: #57606a;
+    --rec-strong: #1a7f37;
+    --rec-weak: #0550ae;
+    --pp: #57606a;
+    --loe-1: #9a6700;
+    --loe-2: #1a7f37;
+    --loe-3: #57606a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
 
-/* ── NAVBAR ── */
-.navbar {
-  position: sticky; top: 0; z-index: 999;
-  background: var(--navy);
-  display: flex; align-items: center; gap: 0;
-  padding: 0 24px;
-  height: 52px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.25);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.navbar::-webkit-scrollbar { display: none; }
-.navbar-brand {
-  font-size: 13px; font-weight: 600;
-  color: var(--white); white-space: nowrap;
-  margin-right: 24px; letter-spacing: .02em;
-  flex-shrink: 0;
-}
-.navbar-brand span { color: var(--teal); }
-.nav-links { display: flex; gap: 2px; }
-.nav-link {
-  color: rgba(255,255,255,.7);
-  font-size: 12px; font-weight: 400;
-  padding: 6px 10px; border-radius: 5px;
-  text-decoration: none; white-space: nowrap;
-  transition: all .18s;
-  flex-shrink: 0;
-  background: none; border: none; cursor: pointer;
-  font-family: inherit;
-}
-.nav-link:hover { background: rgba(255,255,255,.1); color: #fff; }
+  /* ── HEADER ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header-inner { width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .logo-badge {
+    background: #1a7f37;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+  header h1 { font-size: 20px; font-weight: 700; color: var(--text); }
+  .meta { color: var(--text2); font-size: 11px; }
+  .source-link { color: var(--accent2); font-size: 11px; text-decoration: none; }
+  .source-link:hover { text-decoration: underline; }
 
-/* ── HERO ── */
-.hero {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 55%, #1e3a6e 100%);
-  color: var(--white);
-  padding: 32px 40px 28px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
-.hero-badge {
-  display: inline-block;
-  background: rgba(27,156,133,.25);
-  border: 1px solid rgba(27,156,133,.5);
-  color: #6ee7d8;
-  font-size: 11px; font-weight: 500;
-  padding: 3px 12px; border-radius: 20px;
-  letter-spacing: .05em; text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.hero h1 {
-  font-size: clamp(20px, 3vw, 28px);
-  font-weight: 700; line-height: 1.3;
-  margin-bottom: 8px;
-}
-.hero-sub {
-  font-size: 13px; color: rgba(255,255,255,.7);
-  margin-bottom: 14px;
-}
-.hero-meta {
-  display: flex; flex-wrap: wrap; gap: 14px;
-  font-size: 12.5px; color: rgba(255,255,255,.6);
-}
-.hero-meta span { display: flex; align-items: center; gap: 6px; }
-.hero-meta b { color: rgba(255,255,255,.9); }
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex;
+    justify-content: center;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-bar-inner { width: 100%; max-width: 900px; display: flex; align-items: center; justify-content: center; gap: 2px; }
+  .tab {
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--text2);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s;
+    user-select: none;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent2); border-bottom-color: var(--accent2); }
+  .tab-abbr-wrap {
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+    margin-left: 6px;
+    flex-shrink: 0;
+    position: relative;
+  }
 
-/* ── MAIN CONTAINER ── */
-.container { max-width: 980px; margin: 0 auto; padding: 16px 24px 36px; }
+  /* ── MAIN ── */
+  .main { padding: 12px 16px; max-width: 900px; margin: 0 auto; }
+  .panel { display: none; }
+  .panel.active { display: block; }
 
-/* ── ABSTRACT BOX ── */
-.abstract-box {
-  background: var(--white);
-  border-left: 4px solid var(--teal);
-  border-radius: 0 var(--r2) var(--r2) 0;
-  padding: 16px 20px;
-  margin-bottom: 20px;
-  box-shadow: var(--shadow);
-}
-.abstract-box h2 { font-size: 13px; font-weight: 700; color: var(--teal2); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
-.abstract-box p { font-size: 14px; line-height: 1.7; color: var(--text2); }
+  /* ── GRID ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  @media (max-width: 700px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
 
-/* ── SECTIONS ── */
-.section { margin-bottom: 24px; scroll-margin-top: 68px; }
-.section-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  user-select: none;
-}
-.section-header:hover .section-title { color: var(--teal2); }
-.section-num {
-  background: var(--navy);
-  color: var(--white);
-  font-size: 12px; font-weight: 700;
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.section-title {
-  font-size: 20px; font-weight: 700;
-  color: var(--navy);
-  border-bottom: 2px solid var(--teal);
-  padding-bottom: 4px;
-  flex: 1;
-  transition: color .18s;
-}
-.toggle-btn {
-  flex-shrink: 0;
-  width: 28px; height: 28px;
-  border: none; border-radius: 50%;
-  background: var(--teal);
-  color: #fff;
-  font-size: 15px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  transition: background .18s, transform .22s;
-  line-height: 1;
-}
-.toggle-btn:hover { background: var(--teal2); }
-.toggle-btn.collapsed { transform: rotate(-90deg); background: var(--gray3); }
-.section-body {
-  overflow: hidden;
-  transition: max-height .35s cubic-bezier(.4,0,.2,1), opacity .3s;
-  max-height: 9999px;
-  opacity: 1;
-}
-.section-body.collapsed {
-  max-height: 0 !important;
-  opacity: 0;
-}
+  /* ── CARD ── */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
+  .card-header {
+    background: var(--surface2);
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  .card-header .ch-title { display: flex; align-items: center; gap: 8px; }
+  .card-header .toggle { font-size: 14px; transition: transform .2s; }
+  .card-header.open .toggle { transform: rotate(180deg); }
+  .card-body { padding: 10px 12px; }
+  .card-body.collapsed { display: none; }
 
-/* ── CONTROL BAR ── */
-.ctrl-bar {
-  display: flex; justify-content: flex-end; align-items: center; gap: 8px;
-  margin-bottom: 12px;
-  padding: 6px 0;
-}
-.ctrl-btn {
-  font-size: 12px; font-weight: 500;
-  padding: 5px 14px; border-radius: 20px;
-  border: 1px solid var(--teal);
-  background: transparent; color: var(--teal2);
-  cursor: pointer; transition: all .18s;
-}
-.ctrl-btn:hover { background: var(--teal); color: #fff; }
+  /* ── STAT ── */
+  .stat-row { display: flex; gap: 8px; margin-bottom: 10px; }
+  .stat-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; flex: 1; text-align: center; }
+  .stat-val { font-size: 20px; font-weight: 700; color: var(--accent2); }
+  .stat-lbl { font-size: 10px; color: var(--text2); margin-top: 2px; }
 
-/* ── CARDS ── */
-.card {
-  background: var(--white);
-  border-radius: var(--r2);
-  padding: 14px 18px;
-  box-shadow: var(--shadow);
-  margin-bottom: 12px;
-}
-.card-title {
-  font-size: 14px; font-weight: 700;
-  color: var(--navy2);
-  margin-bottom: 8px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--gray2);
-}
+  /* ── GRADE BADGES ── */
+  .grade { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; white-space: nowrap; position: relative; cursor: help; }
+  .grade-strong { background: #dafbe1; color: #116329; border: 1px solid #1a7f37; }
+  .grade-weak { background: #ddf4ff; color: #0550ae; border: 1px solid #0550ae; }
+  .grade-open { background: #f6f8fa; color: #57606a; border: 1px solid #d0d7de; }
+  .loe-1 { background: #fff8c5; color: #7d4e00; border: 1px solid #9a6700; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-2 { background: #dafbe1; color: #116329; border: 1px solid #1a7f37; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-3 { background: #f6f8fa; color: #57606a; border: 1px solid #d0d7de; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-4 { background: #fff8c5; color: #9a6700; border: 1px solid #9a6700; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-5 { background: #ffebe9; color: #82071e; border: 1px solid #cf222e; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
 
-/* ── FIGURE ── */
-.figure-wrap {
-  background: var(--white);
-  border-radius: var(--r2);
-  padding: 14px 16px;
-  box-shadow: var(--shadow);
-  margin: 10px 0;
-  overflow: hidden;
-}
-.figure-caption {
-  font-size: 12px; color: var(--gray4);
-  text-align: center; margin-top: 8px;
-  font-style: italic;
-  border-top: 1px solid var(--gray2);
-  padding-top: 6px;
-}
-.figure-wrap svg { display: block; width: 100%; }
+  /* ── TOOLTIP ── */
+  .grade::after {
+    content: attr(data-tip);
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f2328;
+    color: #e6edf3;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 500;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  }
+  .grade::before {
+    content: '';
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 1px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #1f2328;
+    z-index: 501;
+    pointer-events: none;
+  }
+  .grade:hover::after, .grade:hover::before { display: block; }
 
-/* ── TABLES ── */
-.table-wrap { overflow-x: auto; margin: 8px 0; border-radius: var(--r2); box-shadow: var(--shadow); }
-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--white); border-radius: var(--r2); overflow: hidden; }
-thead tr { background: var(--navy); color: var(--white); }
-thead th { padding: 8px 12px; font-weight: 600; text-align: left; font-size: 12.5px; }
-tbody td { padding: 7px 12px; border-bottom: 0.5px solid var(--gray2); vertical-align: top; line-height: 1.55; }
-tbody tr:hover td { background: #F0F4FF; }
-tbody tr:last-child td { border-bottom: none; }
-.sub-header td { background: #EEF2F8; font-weight: 600; color: var(--navy2); font-size: 12px; }
+  /* ── REC LIST ── */
+  .rec-list { list-style: none; }
+  .rec-item { padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-start; }
+  .rec-item:last-child { border-bottom: none; }
+  .rec-badges { display: flex; gap: 4px; flex-shrink: 0; margin-top: 1px; flex-wrap: nowrap; }
+  .rec-text { font-size: 12px; color: var(--text); line-height: 1.55; }
+  .rec-text strong { color: var(--accent2); }
+  .stmt-item { padding: 7px 0 7px 10px; border-left: 3px solid var(--border); margin-bottom: 5px; font-size: 12px; color: var(--text2); line-height: 1.55; }
 
-/* ── BADGES ── */
-.badge {
-  display: inline-block;
-  padding: 2px 8px; border-radius: 20px;
-  font-size: 11px; font-weight: 600;
-  white-space: nowrap;
-}
-.b-strong { background: #E8F5E9; color: #1B5E20; }
-.b-weak   { background: #FFF8E1; color: #E65100; }
-.b-no     { background: #FFEBEE; color: #B71C1C; }
-.b-open   { background: #E3F2FD; color: #0D47A1; }
-.b-stmt   { background: #F3E5F5; color: #4A148C; }
+  /* ── ALERT ── */
+  .alert { padding: 8px 12px; border-radius: 6px; font-size: 12px; margin: 8px 0; display: flex; gap: 8px; align-items: flex-start; }
+  .alert-danger { background: #ffebe9; border-left: 3px solid var(--red); color: #82071e; }
+  .alert-info { background: #ddf4ff; border-left: 3px solid var(--accent2); color: #0550ae; }
+  .alert-warn { background: #fff8c5; border-left: 3px solid var(--yellow); color: #7d4e00; }
+  .alert-success { background: #dafbe1; border-left: 3px solid var(--green); color: #116329; }
 
-/* ── INFO BOXES ── */
-.info-box {
-  border-radius: var(--r);
-  padding: 10px 14px;
-  margin: 8px 0;
-  font-size: 13px;
-  line-height: 1.6;
-}
-.info-navy  { background: #E8EDF5; border-left: 4px solid var(--navy2); }
-.info-teal  { background: #E0F5F1; border-left: 4px solid var(--teal); }
-.info-amber { background: #FFF3E0; border-left: 4px solid var(--amber); }
-.info-red   { background: #FFEBEE; border-left: 4px solid var(--red); }
-.info-green { background: #E8F5E9; border-left: 4px solid var(--green); }
-.info-box b { color: var(--navy); }
+  /* ── TABLE ── */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .tbl th { background: var(--surface2); color: var(--text2); padding: 6px 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; text-align: left; }
+  .tbl td { padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl tr:hover td { background: rgba(0,0,0,0.02); }
+  .tbl .section-row td { background: var(--surface2); color: var(--accent2); font-weight: 600; font-size: 11px; }
 
-/* ── GRID ── */
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
-.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 8px 0; }
-@media (max-width: 680px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+  /* ── ACCORDION ── */
+  .acc { border: 1px solid var(--border); border-radius: 6px; margin-bottom: 5px; overflow: hidden; }
+  .acc-hdr { background: var(--surface2); padding: 7px 12px; font-size: 12px; font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .acc-hdr:hover { background: var(--border); }
+  .acc-hdr .acc-right { display: flex; gap: 8px; align-items: center; font-size: 11px; color: var(--text2); }
+  .acc-body { display: none; padding: 10px 12px; font-size: 12px; }
 
-/* ── METRIC CARDS ── */
-.metric-card {
-  background: var(--white);
-  border-radius: var(--r);
-  padding: 12px 14px;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-.metric-card .metric-val { font-size: 26px; font-weight: 700; color: var(--navy); line-height: 1.1; }
-.metric-card .metric-label { font-size: 11.5px; color: var(--gray4); margin-top: 3px; }
+  /* ── PILL ── */
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+  .pill-new { background: #dafbe1; color: var(--green); }
+  .pill-key { background: #ddf4ff; color: var(--accent2); }
+  .pill-warn { background: #ffebe9; color: var(--red); }
 
-/* ── DRUG ROWS ── */
-.drug-row {
-  display: grid;
-  grid-template-columns: 140px 1fr 140px;
-  gap: 12px; align-items: center;
-  padding: 10px 14px;
-  border-bottom: 0.5px solid var(--gray2);
-  font-size: 13px;
-}
-.drug-row:last-child { border-bottom: none; }
-.drug-row:nth-child(even) { background: var(--gray1); }
-.drug-name { font-weight: 600; color: var(--navy2); }
-.drug-note { color: var(--text2); font-size: 12.5px; }
+  /* ── FIBROSIS HEAT MAP ── */
+  .fib-low { background: #dafbe1; color: #116329; font-weight: 600; text-align: center; }
+  .fib-mod { background: #fff8c5; color: #7d4e00; font-weight: 600; text-align: center; }
+  .fib-high { background: #ffe4c4; color: #bc4c00; font-weight: 600; text-align: center; }
+  .fib-vhigh { background: #ffebe9; color: #82071e; font-weight: 600; text-align: center; }
 
-/* ── PRINT ── */
-@media print {
-  .navbar { display: none; }
-  .container { padding: 0; }
-  .hero { padding: 24px; }
-  body { font-size: 12px; }
-  .card, .figure-wrap, .abstract-box { box-shadow: none; border: 1px solid #ddd; }
-}
+  /* ── ABBR ── */
+  .abbr-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 5px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px; }
+  .abbr-term { font-weight: 700; color: var(--accent2); font-size: 12px; font-family: 'Courier New', monospace; white-space: nowrap; }
+  .abbr-def { font-size: 11px; color: var(--text2); line-height: 1.45; }
 
-/* ── SCROLLTOP ── */
-#scrolltop {
-  position: fixed; bottom: 28px; right: 24px;
-  width: 40px; height: 40px;
-  background: var(--navy); color: #fff;
-  border: none; border-radius: 50%;
-  font-size: 18px; cursor: pointer;
-  box-shadow: 0 3px 12px rgba(0,0,0,.25);
-  display: flex; align-items: center; justify-content: center;
-  transition: opacity .2s;
-  z-index: 500;
-}
-#scrolltop:hover { background: var(--navy2); }
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #c8d0d9; border-radius: 3px; }
 
-p { margin-bottom: 5px; }
-ul, ol { padding-left: 18px; margin-bottom: 6px; }
-li { margin-bottom: 2px; font-size: 13.5px; }
-strong { color: var(--navy); }
-h3 { font-size: 15px; font-weight: 700; color: var(--navy2); margin: 10px 0 5px; }
-h4 { font-size: 13.5px; font-weight: 600; color: var(--teal2); margin: 8px 0 4px; }
+  small { color: var(--text2); font-size: 10px; }
+  .danger-text { color: var(--red); }
+  .success-text { color: var(--green); }
+  .info-text { color: var(--accent2); }
+  .warn-text { color: var(--yellow); }
+  .sec-sep { height: 1px; background: var(--border); margin: 10px 0; }
+  .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="navbar-brand">MASLD CPG 2024 <span>한글 요약</span></div>
-  <div class="nav-links">
-    <button class="nav-link" onclick="navScrollTo('s1')">명명법</button>
-    <button class="nav-link" onclick="navScrollTo('s2')">역학</button>
-    <button class="nav-link" onclick="navScrollTo('s3')">위험인자</button>
-    <button class="nav-link" onclick="navScrollTo('s4')">선별·진단</button>
-    <button class="nav-link" onclick="navScrollTo('s5')">비침습검사</button>
-    <button class="nav-link" onclick="navScrollTo('s6')">HCC감시</button>
-    <button class="nav-link" onclick="navScrollTo('s7')">생활습관</button>
-    <button class="nav-link" onclick="navScrollTo('s8')">약물치료</button>
-    <button class="nav-link" onclick="navScrollTo('s9')">수술</button>
-    <button class="nav-link" onclick="navScrollTo('s10')">간경변·이식</button>
-    <button class="nav-link" onclick="navScrollTo('s11')">권고요약</button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge">Clinical Practice Guidelines 2024</div>
-    <h1>EASL–EASD–EASO 임상진료지침<br>대사이상 연관 지방간질환(MASLD) 관리</h1>
-    <div class="hero-sub">European Association for the Study of the Liver · Diabetes · Obesity 공동 발표 | 한글 상세 요약</div>
-    <div class="hero-meta">
-      <span><b>저널</b> Journal of Hepatology 2024;81:492–542</span>
-      <span><b>DOI</b> 10.1016/j.jhep.2024.04.031</span>
-      <span><b>권고수준</b> Oxford CEBM 기반</span>
-      <span><b>Delphi 합의</b> 56개국 236명</span>
+<header>
+  <div class="header-inner">
+    <div style="display:flex;align-items:center;gap:10px;justify-content:center">
+      <span class="logo-badge">EASL·EASD·EASO 2024</span>
+      <h1>MASLD 대사이상 관련 지방간질환 진료지침</h1>
+    </div>
+    <div style="text-align:center;margin-top:3px;line-height:1.4">
+      <a href="https://doi.org/10.1016/j.jhep.2024.04.031" class="source-link" target="_blank">Journal of Hepatology 2024;81:492–542 ↗</a>
+      <span class="meta"> · Published June 2024</span><br>
+      <span style="font-size:10px;color:var(--text2);font-style:italic">This tool is not officially endorsed by EASL/EASD/EASO</span>
     </div>
   </div>
-</div>
+</header>
 
-<!-- MAIN -->
-<div class="container">
-
-<!-- ABSTRACT -->
-<div class="abstract-box">
-  <h2>핵심 요약</h2>
-  <p>MASLD(대사이상 연관 지방간질환)는 이전 NAFLD를 대체하는 명칭으로, 간 지방증이 영상 또는 조직검사로 확인된 상태에서 심장대사 위험인자 ≥1개가 동반되고 과도한 음주가 없는 경우로 정의된다. 질환 스펙트럼은 단순 지방증(MASL) → 대사이상 연관 지방간염(MASH) → 섬유화 → 간경변 → MASH 관련 간세포암(HCC)을 포함한다.</p>
-  <p style="margin-bottom:0">심장대사 위험인자 보유자 또는 간효소 이상자에서 FIB-4 기반 단계적 비침습 접근으로 진행 섬유화를 선별하고, 생활습관 교정과 동반질환 최적 관리가 치료의 근간이 된다. 비경변성 MASH F2–F3에서는 Resmetirom을 MASH 표적 치료로 고려할 수 있으며, GLP1RA·SGLT2i는 각각의 대사 적응증으로 사용한다.</p>
-</div>
-
-<!-- CONTROL BAR -->
-<div class="ctrl-bar">
-  <button class="ctrl-btn" onclick="expandAll()">모두 펼치기</button>
-  <button class="ctrl-btn" onclick="collapseAll()">모두 접기</button>
-</div>
-
-<!-- ══════════════════════════════════════════
-     SECTION 1: 명명법
-══════════════════════════════════════════ -->
-<section id="s1" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">1</div>
-    <div class="section-title">서론 및 명명법</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <div class="card">
-    <div class="card-title">MASLD 정의</div>
-    <p>간 지방증(영상 또는 조직검사로 확인) + 아래 심장대사 위험인자 <strong>≥1개</strong> + 다른 원인 없음</p>
-    <div class="grid2" style="margin-top:12px">
-      <div class="info-box info-navy">
-        <b>NAFLD → MASLD 전환 근거</b><br>
-        기존 NAFLD 환자의 <strong>99.8%</strong>가 MASLD 기준 충족 (대형 3차 코호트). NHANES III에서는 94.7%. 임상 특성·NIT 정확도·장기 사망률이 거의 동일하므로 기존 NAFLD 근거를 MASLD에 그대로 적용 가능하다.
+<div class="tab-bar">
+  <div class="tab-bar-inner">
+    <div class="tab active" onclick="showTab('overview')">🏠 개요·정의</div>
+    <div class="tab" onclick="showTab('screening')">🔍 선별·진단</div>
+    <div class="tab" onclick="showTab('nit')">📊 비침습 검사</div>
+    <div class="tab" onclick="showTab('lifestyle')">🥗 생활습관</div>
+    <div class="tab" onclick="showTab('pharma')">💊 약물치료</div>
+    <div class="tab" onclick="showTab('advanced')">🏥 고도 질환</div>
+    <div class="tab" onclick="showTab('updates')">🆕 주요 변경점</div>
+    <div class="tab-abbr-wrap">
+      <div style="position:relative;display:flex;align-items:center;flex-shrink:0">
+        <span style="position:absolute;left:8px;color:var(--text2);font-size:12px;pointer-events:none">🔍</span>
+        <input id="abbr-input" type="text" placeholder="약어 검색" oninput="filterAbbr(this.value)"
+          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size:12px;width:130px;min-width:130px;max-width:130px;outline:none;box-sizing:border-box;"
+          onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+        <span id="abbr-count" style="position:absolute;right:7px;font-size:10px;color:var(--text2);pointer-events:none"></span>
       </div>
-      <div class="info-box info-teal">
-        <b>MetALD — 별개 범주</b><br>
-        MASLD 기준을 충족하면서 음주량이 여성 20–50 g/일, 남성 30–60 g/일인 군. MASLD보다 전체 사망률이 높다. MASLD 권고를 MetALD에 그대로 적용할 수 없다.
+      <div id="abbr-dropdown" style="display:none;position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;width:480px;max-height:360px;overflow-y:auto;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.12)">
+        <div id="abbr-grid-drop" style="display:grid;grid-template-columns:1fr"></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Table 3 -->
+<div class="main">
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<div id="tab-overview" class="panel active">
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-val" style="color:var(--red)">30%+</div><div class="stat-lbl">전 세계 MASLD 유병률 (2024)</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--yellow)">10–30%</div><div class="stat-lbl">단순 지방간 → 지방간염 진행률</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--green)">F2 이상</div><div class="stat-lbl">간 관련 예후에 유의한 섬유화 기준</div></div>
+  </div>
+
+  <!-- 정의·명칭 -->
   <div class="card">
-    <div class="card-title">표 1. MASLD 진단 심장대사 위험인자 (5가지 중 ≥1개 필요)</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>위험인자</th><th>성인 기준</th></tr></thead>
-        <tbody>
-          <tr><td><strong>과체중 / 비만</strong></td><td>BMI ≥25 kg/m² (아시아인 ≥23) <br>허리둘레: 유럽인 남 ≥94 cm, 여 ≥80 cm</td></tr>
-          <tr><td><strong>혈당이상 / T2DM</strong></td><td>공복혈당 5.6–6.9 mmol/L, HbA1c 39–47 mmol/mol(5.7–6.4%), 또는 T2DM 진단·치료 중</td></tr>
-          <tr><td><strong>고중성지방혈증</strong></td><td>TG ≥1.7 mmol/L (150 mg/dL) 또는 지질강하제 복용 중</td></tr>
-          <tr><td><strong>저HDL콜레스테롤</strong></td><td>남 &lt;1.0 mmol/L (39 mg/dL), 여 &lt;1.3 mmol/L (50 mg/dL) 또는 지질강하제 복용 중</td></tr>
-          <tr><td><strong>고혈압</strong></td><td>≥130/85 mmHg 또는 강압제 복용 중</td></tr>
-        </tbody>
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🔑</span> SLD 명칭 체계 및 MASLD 정의</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-info">
+        <span>📌</span>
+        <div><strong>MASLD</strong>(대사이상 관련 지방간질환) = 과거 NAFLD 대체 명칭. 간 지방증 + 심혈관대사 위험인자 ≥1개 + 다른 명확한 원인 없음. 2023년 국제 다학제 Delphi 합의에 의해 확정.</div>
+      </div>
+      <table class="tbl" style="margin-top:8px">
+        <tr><th>명칭</th><th>정의</th><th>비고</th></tr>
+        <tr><td><strong>SLD</strong></td><td>지방간질환 (상위 개념)</td><td>영상 또는 조직검사로 확인된 간 지방증</td></tr>
+        <tr><td><strong>MASLD</strong></td><td>간 지방증 + 심혈관대사 위험인자 ≥1개</td><td>NAFLD를 대체; 유병률 99.8% 중복</td></tr>
+        <tr><td><strong>MASH</strong></td><td>조직학적 간세포 풍선변성 + 소엽 염증</td><td>과거 NASH에 해당</td></tr>
+        <tr><td><strong>MetALD</strong></td><td>MASLD + 중등도 음주 (여성 20–50 g/일, 남성 30–60 g/일)</td><td>MASLD보다 예후 불량; 별도 범주</td></tr>
+        <tr><td><strong>ALD</strong></td><td>알코올 관련 간질환 (여성 &gt;50 g/일, 남성 &gt;60 g/일)</td><td>—</td></tr>
       </table>
     </div>
   </div>
 
-  <!-- Figure 1: SLD Classification -->
-  <div class="figure-wrap">
-    <div class="card-title" style="border:none;margin-bottom:16px">그림 1. SLD 및 하위분류 흐름도 (Fig. 1 재현)</div>
-    <svg viewBox="0 0 680 580" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;font-family:'Noto Sans KR',sans-serif">
-      <defs>
-        <marker id="fig1-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </marker>
-      </defs>
-
-      <!-- ① SLD -->
-      <rect x="245" y="20" width="190" height="44" rx="8" fill="#E8ECF0" stroke="#7F8C8D" stroke-width="0.5"/>
-      <text x="340" y="42" text-anchor="middle" font-size="14" font-weight="600" fill="#1A2332" dominant-baseline="central">지방간질환 (SLD)</text>
-      <line x1="340" y1="64" x2="340" y2="102" stroke="#4A5568" stroke-width="1.5" marker-end="url(#fig1-arr)"/>
-
-      <!-- ② 심장대사 위험인자? -->
-      <rect x="220" y="104" width="240" height="48" rx="8" fill="#E0F5F1" stroke="#1B9C85" stroke-width="0.5"/>
-      <text x="340" y="122" text-anchor="middle" font-size="13" font-weight="600" fill="#0D7264" dominant-baseline="central">심장대사 위험인자 ≥1개?</text>
-      <text x="340" y="140" text-anchor="middle" font-size="11" fill="#1B9C85" dominant-baseline="central">비만·혈당이상·TG↑·HDL↓·혈압↑</text>
-      <!-- YES → MASLD (실선, teal) -->
-      <text x="170" y="116" text-anchor="middle" font-size="11" font-weight="600" fill="#1D9E75">YES</text>
-      <line x1="220" y1="128" x2="120" y2="128" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#fig1-arr)"/>
-      <!-- NO → 음주력 (점선, gray) -->
-      <text x="510" y="116" text-anchor="middle" font-size="11" font-weight="600" fill="#888780">NO</text>
-      <line x1="460" y1="128" x2="544" y2="128" stroke="#888780" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#fig1-arr)"/>
-
-      <!-- ③ MASLD -->
-      <rect x="10" y="104" width="108" height="48" rx="8" fill="#6A1B9A" stroke="#6A1B9A"/>
-      <text x="64" y="122" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" dominant-baseline="central">MASLD</text>
-      <text x="64" y="140" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)" dominant-baseline="central">대사이상 지방간</text>
-      <line x1="64" y1="152" x2="64" y2="192" stroke="#4A5568" stroke-width="1.5" marker-end="url(#fig1-arr)"/>
-
-      <!-- ④ MASH -->
-      <rect x="10" y="192" width="108" height="56" rx="8" fill="#E64A19" stroke="#E64A19"/>
-      <text x="64" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" dominant-baseline="central">MASH</text>
-      <text x="64" y="228" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)" dominant-baseline="central">풍선변성 +</text>
-      <text x="64" y="244" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)" dominant-baseline="central">소엽염증 동반</text>
-
-      <!-- ⑤ 음주력? -->
-      <rect x="546" y="104" width="108" height="56" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="0.5"/>
-      <text x="600" y="122" text-anchor="middle" font-size="13" font-weight="600" fill="#E65100" dominant-baseline="central">음주력?</text>
-      <text x="600" y="138" text-anchor="middle" font-size="11" fill="#795548" dominant-baseline="central">여 &gt;20 g/일</text>
-      <text x="600" y="152" text-anchor="middle" font-size="11" fill="#795548" dominant-baseline="central">남 &gt;30 g/일</text>
-      <!-- YES → 음주량초과 (실선, teal) -->
-      <text x="614" y="175" font-size="11" font-weight="600" fill="#1D9E75">YES</text>
-      <line x1="600" y1="160" x2="600" y2="190" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#fig1-arr)"/>
-      <!-- NO → 기타원인 사선 (점선, gray) -->
-      <text x="500" y="218" text-anchor="middle" font-size="11" font-weight="600" fill="#888780">NO</text>
-      <line x1="546" y1="141" x2="432" y2="316" stroke="#888780" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#fig1-arr)"/>
-
-      <!-- ⑥ 음주량 초과? -->
-      <rect x="535" y="192" width="130" height="44" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="0.5"/>
-      <text x="600" y="210" text-anchor="middle" font-size="13" font-weight="600" fill="#E65100" dominant-baseline="central">음주량 초과?</text>
-      <text x="600" y="226" text-anchor="middle" font-size="11" fill="#795548" dominant-baseline="central">여 &gt;50 / 남 &gt;60 g/일</text>
-      <!-- NO → MetALD (점선, gray) -->
-      <text x="348" y="250" text-anchor="middle" font-size="11" font-weight="600" fill="#888780">NO</text>
-      <path d="M556,236 L556,260 L140,260 L140,318" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#fig1-arr)"/>
-      <!-- YES → ALD (실선, teal) -->
-      <text x="614" y="277" font-size="11" font-weight="600" fill="#1D9E75">YES</text>
-      <line x1="600" y1="236" x2="600" y2="316" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#fig1-arr)"/>
-
-      <!-- ⑦ MetALD -->
-      <rect x="50" y="318" width="180" height="56" rx="8" fill="#FF8F00" stroke="#FF8F00"/>
-      <text x="140" y="337" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" dominant-baseline="central">MetALD</text>
-      <text x="140" y="353" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.9)" dominant-baseline="central">여 20–50 / 남 30–60 g/일</text>
-      <text x="140" y="369" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.9)" dominant-baseline="central">MASLD 권고 직접 적용 불가</text>
-
-      <!-- ⑧ 기타 원인 SLD -->
-      <rect x="250" y="318" width="180" height="56" rx="8" fill="#E8EDF5" stroke="#0B2447" stroke-width="0.5"/>
-      <text x="340" y="337" text-anchor="middle" font-size="13" font-weight="600" fill="#0B2447" dominant-baseline="central">기타 원인 SLD</text>
-      <text x="340" y="353" text-anchor="middle" font-size="11" fill="#4A5568" dominant-baseline="central">DILI · 단일유전자질환</text>
-      <text x="340" y="369" text-anchor="middle" font-size="11" fill="#4A5568" dominant-baseline="central">약물 · 영양 등</text>
-
-      <!-- ⑨ ALD -->
-      <rect x="520" y="318" width="160" height="56" rx="8" fill="#C62828" stroke="#C62828"/>
-      <text x="600" y="337" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" dominant-baseline="central">ALD</text>
-      <text x="600" y="353" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.9)" dominant-baseline="central">여 &gt;50 / 남 &gt;60 g/일</text>
-      <text x="600" y="369" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.9)" dominant-baseline="central">알코올 관련 간질환</text>
-
-      <!-- 기타원인 → Cryptogenic -->
-      <line x1="340" y1="374" x2="340" y2="428" stroke="#4A5568" stroke-width="1.5" marker-end="url(#fig1-arr)"/>
-
-      <!-- ⑩ Cryptogenic SLD -->
-      <rect x="250" y="430" width="180" height="44" rx="8" fill="#E8EDF5" stroke="#90A4AE" stroke-width="0.5"/>
-      <text x="340" y="448" text-anchor="middle" font-size="13" font-weight="600" fill="#37474F" dominant-baseline="central">Cryptogenic SLD</text>
-      <text x="340" y="464" text-anchor="middle" font-size="11" fill="#78909C" dominant-baseline="central">원인 불명</text>
-
-      <!-- 범례 -->
-      <line x1="30" y1="506" x2="70" y2="506" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#fig1-arr)"/>
-      <text x="76" y="506" font-size="11" fill="#4A5568" dominant-baseline="central">YES (해당)</text>
-      <line x1="170" y1="506" x2="210" y2="506" stroke="#888780" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#fig1-arr)"/>
-      <text x="216" y="506" font-size="11" fill="#4A5568" dominant-baseline="central">NO (해당 없음)</text>
-
-      <!-- 바텀 노트 -->
-      <rect x="20" y="524" width="640" height="42" rx="6" fill="#F5F7FA" stroke="#CFD8DC" stroke-width="0.5"/>
-      <text x="340" y="540" text-anchor="middle" font-size="11.5" fill="#4A5568" dominant-baseline="central">✦ NAFLD 환자의 99.8%가 MASLD 기준 충족 — MetALD는 독립적 예후를 가진 별개 범주</text>
-      <text x="340" y="557" text-anchor="middle" font-size="11.5" fill="#4A5568" dominant-baseline="central">✦ ALT 정상이더라도 유의한 MASH 또는 진행 섬유화 동반 가능 (남 &gt;33 U/L, 여 &gt;25 U/L)</text>
-    </svg>
-    <div class="figure-caption">그림 1. SLD 원인별 분류 알고리즘. 음주량 평가는 AUDIT, 에틸글루쿠론산(소변·모발) 등 검증된 도구로 정량화한다.</div>
-  </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SECTION 2: 역학·자연경과
-══════════════════════════════════════════ -->
-<section id="s2" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">2</div>
-    <div class="section-title">역학 및 자연경과</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <div class="grid3">
-    <div class="metric-card">
-      <div class="metric-val">&gt;30%</div>
-      <div class="metric-label">일반인구 유병률 (2016년 25%에서 상승)</div>
+  <!-- 심혈관대사 위험인자 -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>📋</span> MASLD 진단에 필요한 심혈관대사 위험인자 (≥1개 해당)</div>
+      <span class="toggle">▾</span>
     </div>
-    <div class="metric-card">
-      <div class="metric-val">42–65%</div>
-      <div class="metric-label">T2DM 환자에서의 MASLD 유병률</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-val">17.05</div>
-      <div class="metric-label">전체 사망률 /1,000 인년 (일반인구 대비 초과)</div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:16px">
-    <div class="card-title">섬유화 단계별 간 관련 사망률 — 스웨덴 인구 코호트 (n=10,568)</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>조직학적 단계</th><th>간경변 사망 (/1,000 PY)</th><th>HCC 사망 (/1,000 PY)</th><th>임상적 의의</th></tr></thead>
-        <tbody>
-          <tr><td>단순 지방증 (MASL)</td><td>1.2</td><td>0.7</td><td>일반인구와 유사 → 선별 불필요</td></tr>
-          <tr><td>MASH (섬유화 없음)</td><td>3.0</td><td>1.3</td><td>섬유화 예방이 목표</td></tr>
-          <tr><td>비경변성 섬유화 (F1–F3)</td><td>5.5</td><td>2.5</td><td>적극 관리 시작</td></tr>
-          <tr><td><strong>간경변 (F4)</strong></td><td><strong>22.3</strong></td><td><strong>5.5</strong></td><td>HCC 감시 필수</td></tr>
-        </tbody>
+    <div class="card-body">
+      <table class="tbl">
+        <tr><th>위험인자</th><th>기준</th></tr>
+        <tr><td>과체중·비만</td><td>BMI ≥25 kg/m² (아시안 ≥23); 또는 허리둘레 남성 ≥94 cm (아시안 90 cm), 여성 ≥80 cm</td></tr>
+        <tr><td>전당뇨 또는 제2형 당뇨</td><td>HbA1c 5.7–6.4%, 공복혈당 100–125 mg/dL, 또는 T2D 치료력</td></tr>
+        <tr><td>고중성지방혈증</td><td>TG ≥150 mg/dL 또는 지질강하제 치료 중</td></tr>
+        <tr><td>저 HDL-콜레스테롤</td><td>남성 &lt;40 mg/dL, 여성 &lt;50 mg/dL 또는 지질강하제 치료 중</td></tr>
+        <tr><td>고혈압</td><td>≥130/85 mmHg 또는 항고혈압제 치료 중</td></tr>
       </table>
     </div>
-    <div class="info-box info-amber" style="margin-top:12px">
-      <b>핵심 원칙:</b> <strong>섬유화 단계</strong>가 MASLD 환자의 간 관련 사망 예측에서 가장 강력한 독립 인자이다. 단순 지방증 단계에서는 간 관련 사망 위험이 임상적으로 유의하게 높지 않아 일반인구 선별검사는 권장하지 않는다.
+  </div>
+
+  <!-- 자연경과 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>📈</span> 자연경과 및 예후 인자</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <div class="grid2">
+        <div>
+          <div style="font-weight:600;font-size:12px;color:var(--accent2);margin-bottom:6px">간 관련 사망률 (1,000 person-years)</div>
+          <table class="tbl">
+            <tr><th>조직학적 단계</th><th>간경변 사망</th><th>HCC</th></tr>
+            <tr><td>단순 지방증</td><td>1.2</td><td>0.7</td></tr>
+            <tr><td>MASH (섬유화 없음)</td><td>3.0</td><td>1.3</td></tr>
+            <tr><td>비간경변 섬유화</td><td>5.5</td><td>2.5</td></tr>
+            <tr><td>간경변</td><td>22.3</td><td>5.5</td></tr>
+          </table>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:12px;color:var(--accent2);margin-bottom:6px">섬유화 진행 주요 위험인자</div>
+          <ul class="rec-list">
+            <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🔴 <strong>제2형 당뇨</strong> — 가장 강력한 독립 위험인자 (HR 1.69 섬유화 진행)</div></li>
+            <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🔴 <strong>복부 비만</strong> — 내장지방 분포가 핵심</div></li>
+            <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🟡 남성 &gt;50세, 폐경 후 여성</div></li>
+            <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🟡 다수의 심혈관대사 위험인자</div></li>
+            <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🟡 고혈압 + 이상지질혈증 동반 (간경변/HCC 위험 1.8배↑)</div></li>
+            <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🟡 PNPLA3 p.I148M, TM6SF2 p.E167K 유전변이</div></li>
+            <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🟡 흡연 (HCC 위험: 현재 흡연자 OR 1.55)</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px">
+        <span>⚠️</span>
+        <div>T2D 동반 MASLD에서 HCC 위험은 T2D 없는 경우 대비 HR 1.07 → 8.36으로 증가. 간경변 없어도 MASLD 관련 HCC 발생 가능 (HCC의 38–49%가 비간경변 MASLD).</div>
+      </div>
     </div>
   </div>
 
+  <!-- 알코올 -->
   <div class="card">
-    <div class="card-title">MASLD와 연관된 간외 질환 위험 (메타분석)</div>
-    <div class="grid2">
-      <ul>
-        <li>비치명적 심혈관질환 HR <strong>1.40</strong></li>
-        <li>관상동맥질환 OR <strong>1.33</strong></li>
-        <li>심부전 OR <strong>1.50</strong></li>
-        <li>뇌졸중 위험 증가</li>
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🍺</span> 알코올 섭취 관련 권고</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">SLD 환자 전원에서 음주량·음주 패턴·과거력을 문서화</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">SLD 환자, 특히 중등도 이상 음주자 → 음주 중단 권고</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text"><strong>고도 섬유화 또는 간경변</strong> → 모든 음주 완전·영구 중단</div>
+        </li>
       </ul>
-      <ul>
-        <li>만성 신장질환 HR <strong>1.43</strong></li>
-        <li>T2DM 신규 발생 HR &gt;2</li>
-        <li>폐쇄성 수면무호흡 HR <strong>2.22</strong></li>
-        <li>갑상선·위장관암 위험 증가</li>
+      <div class="alert alert-info" style="margin-top:8px">
+        <span>ℹ️</span>
+        <div>최신 종적 연구: 경계 내 음주라도 MASLD의 간 예후를 악화시키며, 중등도 음주는 간질환 발생 위험을 약 2배 증가. 심혈관 보호 효과는 MASLD에서 일관되지 않음.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /overview -->
+
+<!-- ═══════════════ SCREENING ═══════════════ -->
+<div id="tab-screening" class="panel">
+
+  <div class="alert alert-info" style="margin-bottom:10px">
+    <span>📌</span>
+    <div>일반 인구 대상 SLD 선별검사는 권고되지 않음. 심혈관대사 위험인자 보유자에서의 <strong>사례 발굴(case-finding)</strong> 전략이 핵심.</div>
+  </div>
+
+  <!-- 선별검사 대상 -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🎯</span> 사례 발굴 대상 — 누구를 검사할 것인가</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">다음 중 하나에 해당: <strong>(A) T2D</strong> 또는 <strong>(B) 복부비만 + 추가 위험인자 ≥1개</strong> 또는 <strong>(C) 간기능 이상 (ALT 상승)</strong> → MASLD 동반 간 섬유화 적극 탐색</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">심혈관대사 위험인자·간효소 이상·영상 소견(지방간) 보유자 → case-finding 고려</div>
+        </li>
+      </ul>
+      <div class="alert alert-warn" style="margin-top:8px">
+        <span>⚠️</span>
+        <div>기대 여명이 간외 요인(고령, 악성종양, 중증 심혈관질환)에 의해 결정되는 경우 → 섬유화 case-finding 불필요</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIB-4 진단 알고리즘 -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🔢</span> 단계적 비침습 섬유화 평가 알고리즘 (Fig. 2)</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-success" style="margin-bottom:8px">
+        <span>✅</span>
+        <div><strong>FIB-4 공식</strong> = 나이(세) × AST(U/L) ÷ [혈소판(10⁹/L) × √ALT(U/L)]</div>
+      </div>
+      <table class="tbl" style="margin-bottom:10px">
+        <tr><th>FIB-4 결과</th><th>해석</th><th>다음 단계</th></tr>
+        <tr><td class="fib-low">&lt;1.3 (&gt;65세: &lt;2.0)</td><td>고도 섬유화 가능성 낮음</td><td>1–3년 후 FIB-4 재평가</td></tr>
+        <tr><td class="fib-mod">1.3–2.67 (중간)</td><td>불확정 — 추가 검사 필요</td><td>VCTE 또는 1년 후 재평가</td></tr>
+        <tr><td class="fib-vhigh">&gt;2.67</td><td>고도 섬유화 의심</td><td>간전문의 의뢰</td></tr>
+      </table>
+      <div class="acc">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>💡 FIB-4 중간값 처리 전략 (1.3–2.67)</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <p style="margin-bottom:8px"><strong>옵션 A (즉시 탄성초음파):</strong> VCTE 등 영상 탄성검사로 섬유화 단계 확인 → 특히 FIB-4가 2.67에 가깝거나 고위험 상황</p>
+          <p><strong>옵션 B (1년 관리 후 재평가):</strong> 생활습관 중재 + 동반질환 치료(GLP-1 RA 등) → 1년 후 FIB-4 재검. 여전히 ≥1.3이면 VCTE 시행</p>
+        </div>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px">
+        <span>⚠️</span>
+        <div>FIB-4는 &gt;65세, 당뇨병, 중간값 범위에서 위양성 증가. FIB-4 단독으로 약 10% 고도 섬유화를 놓칠 수 있음. 음성예측도 높지만 단독으로 배제하기엔 불충분.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 동반질환 평가 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🩺</span> 동반질환 평가 — 초기 진단 시 및 추적 중</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">T2D·이상지질혈증·고혈압·신장질환·수면무호흡증·PCOS·심혈관위험 평가</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">초기 및 정기 추적: 공복혈당·HbA1c·TG·LDL·HDL·Lp(a) (평생 1회), eGFR·UACR, hsCRP, 혈압</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">비만·T2D 관련 간외 악성종양 위험 — 해당 암 선별검사 참여 권고</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">T2D 미진단 MASLD → HOMA-IR 또는 OGTT로 인슐린 저항성 평가 고려</div>
+        </li>
       </ul>
     </div>
-    <div class="info-box info-navy" style="margin-top:10px">
-      주요 사망 원인 순서: <strong>① 심혈관질환 → ② 악성종양(간외) → ③ 간 관련 합병증</strong>. MASLD는 '간질환'이 아닌 전신 대사질환으로 접근해야 한다.
-    </div>
   </div>
-  </div>
-</section>
 
-<!-- ══════════════════════════════════════════
-     SECTION 3: 위험인자
-══════════════════════════════════════════ -->
-<section id="s3" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">3</div>
-    <div class="section-title">위험인자 및 자연경과에 대한 영향</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
+  <!-- HCC 감시 -->
   <div class="card">
-    <div class="card-title">진행 섬유화·간경변·HCC에 가장 큰 영향을 미치는 인자</div>
-    <div class="grid2">
-      <div>
-        <h4>수정 불가능 인자</h4>
-        <ul>
-          <li><strong>남성 나이 &gt;50세</strong>, 폐경 후 여성 (OR ~2.4)</li>
-          <li>히스패닉 민족 (미국 기준)</li>
-          <li>PNPLA3 p.I148M, TM6SF2 p.E167K 변이</li>
-          <li>1촌 이내 진행 섬유화 가족력 (위험 2–3배 증가)</li>
-        </ul>
-      </div>
-      <div>
-        <h4>수정 가능 인자 (중요도 순)</h4>
-        <ul>
-          <li><strong>T2DM</strong>: 섬유화 진행 HR 1.69, HCC HR 최대 8.36</li>
-          <li><strong>비만 (특히 복부비만)</strong>: BMI 5단위 증가 → 간경변 위험 1.3배</li>
-          <li>고혈압+이상지질혈증 병합: 간경변·HCC 위험 1.8배</li>
-          <li>흡연: HCC 위험 OR 1.55 (현재 흡연)</li>
-          <li><strong>음주</strong>: 대사 위험인자와 상가·상승 작용</li>
-        </ul>
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🎗️</span> HCC 감시 권고</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">비간경변 MASLD/MASH + <strong>섬유화 &lt;F3</strong> → HCC 정기 감시 현재 불권고</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text">비간경변 + <strong>F3 섬유화</strong> → 개별 위험 평가에 따라 감시 고려 가능</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text"><strong>MASLD 관련 간경변</strong> → HCC 감시 시행 (현행 가이드라인 준수)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">간경변 + 비만 → 초음파 민감도 45% — <strong>AFP 병합</strong> 고려 (민감도 63%↑)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">초음파 시각화 불량 고위험군 → MRI 대체 감시 고려</div>
+        </li>
+      </ul>
+      <div class="alert alert-info" style="margin-top:8px">
+        <span>ℹ️</span>
+        <div>HCC 위험 상승 인자: T2D·비만, FIB-4 &gt;3.25 (연간 위험 &gt;1%), LSM &gt;10 kPa 및 상승 추세, 고령, 음주·흡연 동반</div>
       </div>
     </div>
-    <div class="info-box info-red" style="margin-top:12px">
-      <b>T2DM의 특별한 위험:</b> 진행 섬유화(F3–F4)를 가진 MASH 보상성 간경변 환자에서 T2DM은 사망 위험 4배 증가, 간 관련 결과(HCC 포함) 위험 2배 증가와 연관된다. T2DM 이형성(내당능 중증 인슐린저항성 클러스터)에 따라 MASLD 진행 위험이 다르다.
-    </div>
   </div>
 
+  <!-- 유전 검사 -->
   <div class="card">
-    <div class="card-title">음주와 MASLD의 상호작용</div>
-    <p>알코올과 대사 위험인자는 만성 간질환 발생·진행에 <strong>독립적이며 상승적</strong>으로 작용한다. 중심성 비만이 가장 강한 시너지 인자다.</p>
-    <div class="info-box info-amber">
-      <b>권고 (강한 권고, strong consensus):</b> 모든 SLD 환자에서 음주량·음주 패턴·음주력을 문서화하라. 진행 섬유화 또는 간경변 환자에서 음주는 완전히 영구적으로 중단해야 한다. MASLD 기준을 충족하는 경우 적정 음주량도 간 예후에 보호 효과 없음이 점차 확인되고 있다.
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🧬</span> 유전 위험 평가</div>
+      <span class="toggle">▾</span>
     </div>
-    <div class="info-box info-teal">
-      <b>도구:</b> AUDIT(-C), 에틸글루쿠론산(소변·모발), 포스파티딜에탄올(PEth) 등으로 정량 평가 가능
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SECTION 4: 선별·진단·모니터링
-══════════════════════════════════════════ -->
-<section id="s4" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">4</div>
-    <div class="section-title">선별·사례발견 및 진단 전략</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <div class="grid2">
-    <div class="info-box info-red">
-      <b>❌ 권장하지 않음 (strong, 95%)</b><br>
-      일반인구 대상 SLD 선별검사. 단순 지방증은 간 관련 예후와 독립적 연관이 없고, 현재 인구집단 선별에 적합한 검사가 없다.
-    </div>
-    <div class="info-box info-teal">
-      <b>✅ 강한 권고 — 사례발견 대상 (89–100%)</b><br>
-      (A) T2DM 환자<br>
-      (B) 복부비만 + 추가 대사 위험인자 ≥1개<br>
-      (C) 지속적 간효소 이상<br>
-      위 3군 모두에서 간섬유화를 동반한 MASLD를 적극 탐색해야 한다.
-    </div>
-  </div>
-
-  <div class="figure-wrap">
-    <div class="card-title" style="border:none;margin-bottom:16px">그림 2. 진행 섬유화 비침습적 평가 단계 알고리즘 (Fig. 2 재현)</div>
-    <svg viewBox="0 0 740 620" xmlns="http://www.w3.org/2000/svg" style="max-width:100%">
-      <defs>
-        <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
-        </marker>
-        <marker id="fb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="#0B2447" stroke-width="1.5" stroke-linecap="round"/>
-        </marker>
-        <marker id="ft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="#1B9C85" stroke-width="1.5" stroke-linecap="round"/>
-        </marker>
-        <marker id="fa2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round"/>
-        </marker>
-      </defs>
-      <!-- Entry -->
-      <rect x="140" y="12" width="460" height="62" rx="8" fill="#0B2447"/>
-      <text x="370" y="33" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="13" font-weight="600" fill="#fff">사례발견 대상군</text>
-      <text x="370" y="51" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" fill="rgba(255,255,255,.85)">(A) T2DM  |  (B) 복부비만 + 추가 위험인자 ≥1개  |  (C) 지속적 간효소 이상</text>
-      <text x="370" y="66" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.65)">※ 우연히 발견된 지방증에도 동일 알고리즘 적용 가능</text>
-      <!-- arrow -->
-      <line x1="370" y1="74" x2="370" y2="98" stroke="#0B2447" stroke-width="1.5" marker-end="url(#fb)"/>
-      <!-- FIB-4 box -->
-      <rect x="240" y="98" width="260" height="56" rx="8" fill="#6A1B9A" stroke="#6A1B9A"/>
-      <text x="370" y="119" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="14" font-weight="700" fill="#fff">FIB-4 산출</text>
-      <text x="370" y="138" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" fill="rgba(255,255,255,.9)">나이 × AST ÷ (혈소판 × √ALT)</text>
-      <text x="370" y="150" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="rgba(255,255,255,.7)">※ 65세 이상: 하한 기준 1.3 → 2.0</text>
-      <!-- Three branches -->
-      <line x1="240" y1="126" x2="100" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#fa)"/>
-      <line x1="370" y1="154" x2="370" y2="198" stroke="#555" stroke-width="1.5" marker-end="url(#fa)"/>
-      <line x1="500" y1="126" x2="640" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#fa)"/>
-      <!-- Branch labels -->
-      <text x="150" y="176" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#2E7D32" font-weight="700">&lt; 1.3</text>
-      <text x="370" y="194" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#E65100" font-weight="700">1.3 – 2.67</text>
-      <text x="590" y="176" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#C62828" font-weight="700">&gt; 2.67</text>
-      <!-- Low risk box -->
-      <rect x="16" y="200" width="172" height="68" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
-      <text x="102" y="221" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#1B5E20">저위험</text>
-      <text x="102" y="239" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#2E7D32">1–3년마다 FIB-4 재평가</text>
-      <text x="102" y="256" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#558B2F">⚠ 10% 진행 섬유화 놓칠 수 있음</text>
-      <!-- Intermediate box -->
-      <rect x="205" y="198" width="330" height="76" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="1"/>
-      <text x="370" y="218" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#E65100">중간위험 → 두 가지 옵션</text>
-      <text x="370" y="236" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#795548">옵션 A: VCTE 등 탄성초음파 즉시 시행</text>
-      <text x="370" y="252" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#795548">옵션 B: 1년간 동반질환 집중 관리 후 FIB-4 재검</text>
-      <text x="370" y="268" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#9E6B00">FIB-4 2.67에 가깝거나 고위험군 → 즉시 탄성초음파 권장</text>
-      <!-- High risk box -->
-      <rect x="556" y="200" width="172" height="68" rx="8" fill="#FFEBEE" stroke="#C62828" stroke-width="1"/>
-      <text x="642" y="221" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#B71C1C">고위험</text>
-      <text x="642" y="239" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#C62828">간과전문의 즉시 의뢰</text>
-      <text x="642" y="255" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#C62828">간 관련 예후 관리계획</text>
-      <!-- VCTE from intermediate -->
-      <line x1="370" y1="274" x2="370" y2="318" stroke="#F5A623" stroke-width="1.5" marker-end="url(#fa2)"/>
-      <!-- VCTE box -->
-      <rect x="210" y="318" width="320" height="56" rx="8" fill="#E3F2FD" stroke="#1976D2" stroke-width="1"/>
-      <text x="370" y="340" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="13" font-weight="700" fill="#0D47A1">VCTE (또는 대체 검사)</text>
-      <text x="370" y="358" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#1565C0">MRE · SWE · ELF (보정된 기준치 적용)</text>
-      <text x="370" y="370" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#1976D2">ELF: 탄성초음파의 대안으로 고급 섬유화 확인 가능</text>
-      <!-- VCTE two branches -->
-      <line x1="310" y1="374" x2="210" y2="428" stroke="#1976D2" stroke-width="1.5" marker-end="url(#fa)"/>
-      <line x1="430" y1="374" x2="530" y2="428" stroke="#1976D2" stroke-width="1.5" marker-end="url(#fa)"/>
-      <text x="238" y="410" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#2E7D32" font-weight="700">&lt; 8.0 kPa</text>
-      <text x="506" y="410" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#C62828" font-weight="700">≥ 8.0 kPa</text>
-      <!-- <8 box -->
-      <rect x="70" y="428" width="230" height="68" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
-      <text x="185" y="448" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#1B5E20">동반질환 집중 관리</text>
-      <text x="185" y="466" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#2E7D32">생활습관 개입, GLP1RA 고려</text>
-      <text x="185" y="482" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#2E7D32">비만대사수술 적응증 평가</text>
-      <!-- ≥8 box -->
-      <rect x="440" y="428" width="230" height="68" rx="8" fill="#FFEBEE" stroke="#C62828" stroke-width="1"/>
-      <text x="555" y="448" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#B71C1C">간과전문의 의뢰</text>
-      <text x="555" y="466" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#C62828">간 관련 예후 관리계획 수립</text>
-      <text x="555" y="482" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#C62828">다학제 팀 동반질환 관리</text>
-      <!-- notes -->
-      <rect x="0" y="516" width="740" height="96" rx="6" fill="#F5F7FA" stroke="#CFD8DC" stroke-width="0.5"/>
-      <text x="370" y="534" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#0B2447">핵심 수식 및 기준치</text>
-      <text x="370" y="552" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">FIB-4 = 나이(세) × AST(U/L) ÷ [혈소판(×10⁹/L) × √ALT(U/L)]</text>
-      <text x="370" y="568" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">ELF = 2.278 + 0.851 × ln(HA) + 0.751 × ln(PIIINP) + 0.394 × ln(TIMP-1)</text>
-      <text x="370" y="586" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">ADAPT: 나이 + T2DM 유무 + PRO-C3 + 혈소판 기반 — 3차 병원·일차 진료 모두 검증됨</text>
-      <text x="370" y="604" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#78909C">비만(BMI ≥30) 환자에서 초음파 탄성검사의 기술적 실패율 높음 → MRE 또는 MRI 기반 검사 고려</text>
-    </svg>
-    <div class="figure-caption">그림 2. 대사 위험인자 보유자 또는 SLD 징후가 있는 성인에서 진행 섬유화 및 간 관련 예후 위험 비침습 평가 전략</div>
-  </div>
-  </div>
-</section>
-
-</div><!-- /container part1 — continues in JS append -->
-<!-- PART 2: sections 5-11 + close -->
-<div class="container" id="part2">
-
-<!-- ══════════════════════════════════════════
-     SECTION 5: 비침습적 검사
-══════════════════════════════════════════ -->
-<section id="s5" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">5</div>
-    <div class="section-title">비침습적 검사 (NIT) 기준치 및 예후 예측력</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <div class="card">
-    <div class="card-title">표 2. 주요 비침습적 검사 — 기준치 및 예후 예측력 (Table 6 요약)</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>검사</th><th>주요 반영 지표</th><th>F3 rule-out</th><th>F3 rule-in</th><th>간 관련 예후 예측</th></tr></thead>
-        <tbody>
-          <tr class="sub-header"><td colspan="5">혈액 기반 섬유화 점수</td></tr>
-          <tr><td><strong>FIB-4</strong></td><td>간세포손상·비장항진</td><td>1.3 (65세↑: 2.0)</td><td>2.67</td><td>++ (중등도)</td></tr>
-          <tr><td>NFS</td><td>간세포손상·대사부담</td><td>–1.455</td><td>0.676</td><td>++ (중등도)</td></tr>
-          <tr><td>APRI</td><td>간세포손상·비장항진</td><td>0.5</td><td>1.5</td><td>++ (중등도)</td></tr>
-          <tr class="sub-header"><td colspan="5">콜라겐 대사 기반</td></tr>
-          <tr><td><strong>ELF</strong></td><td>세포외기질 콜라겐 대사</td><td>7.7</td><td>9.8</td><td><strong>+++ (높음)</strong></td></tr>
-          <tr><td>ADAPT</td><td>콜라겐 대사·비장항진·대사부담</td><td>4.46</td><td>7.15</td><td>? (미확인)</td></tr>
-          <tr class="sub-header"><td colspan="5">영상 기반 섬유화</td></tr>
-          <tr><td><strong>VCTE (LSM)</strong></td><td>섬유성 세포외기질 분율</td><td>8 kPa</td><td>12 kPa</td><td><strong>+++ (높음)</strong></td></tr>
-          <tr><td>2D-SWE</td><td>섬유성 세포외기질 분율</td><td>8 kPa</td><td>10.5 kPa</td><td><strong>+++ (높음)</strong></td></tr>
-          <tr><td>MRE</td><td>섬유성 세포외기질 분율</td><td>F3: 3.53 kPa</td><td>F4: 4.45 kPa</td><td><strong>+++ (높음)</strong></td></tr>
-          <tr class="sub-header"><td colspan="5">복합 점수 (at-risk MASH)</td></tr>
-          <tr><td>FAST score</td><td>VCTE(LSM+CAP)+AST</td><td>0.35</td><td>0.67</td><td>++ (중등도)</td></tr>
-          <tr><td>MAST</td><td>MRE+MRI-PDFF+AST</td><td>0.165</td><td>0.242</td><td>++ (중등도)</td></tr>
-          <tr><td>MEFIB</td><td>MRE+FIB-4</td><td>MRE&lt;3.3+FIB-4&lt;1.6</td><td>MRE≥3.3+FIB-4≥1.6</td><td>+++ (높음)</td></tr>
-          <tr class="sub-header"><td colspan="5">지방증 평가</td></tr>
-          <tr><td>VCTE: CAP</td><td>지방 함량</td><td>S1: 248 dB/m</td><td>S3: 280 dB/m</td><td>+</td></tr>
-          <tr><td>MRI-PDFF</td><td>간 지방 분율 (비침습 금표준)</td><td>S1: 5%</td><td>S3: 16–23%</td><td>+</td></tr>
-        </tbody>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">전문 센터에서 PNPLA3 p.I148M 변이 및/또는 다유전자 위험 점수(PRS) 평가 고려 — 개별화 위험 층화 목적 (대규모 전향 연구로 추가 검증 필요)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text">1차 직계 가족 중 고도 간 섬유화자 또는 조기 발현·중증 표현형 (대사 유발 인자 없는 경우) → 차세대 염기서열 분석(NGS)으로 공존 유전성 간질환 평가 의뢰 고려</div>
+        </li>
+      </ul>
+      <table class="tbl" style="margin-top:8px">
+        <tr><th>유전 변이</th><th>기능</th><th>MASLD에서의 역할</th></tr>
+        <tr><td><strong>PNPLA3 p.I148M</strong></td><td>지방 분해 효소</td><td>가장 강력한 MASLD 위험 변이; HCC, 간경변 위험 ↑↑; 폐경 후 여성에서 효과 더 큼</td></tr>
+        <tr><td><strong>TM6SF2 p.E167K</strong></td><td>VLDL 분비</td><td>MASLD 진행 위험↑; HCC 연관</td></tr>
+        <tr><td><strong>HSD17B13</strong></td><td>지질 대사</td><td>보호 변이 — MASLD 진행 위험 감소</td></tr>
+        <tr><td><strong>MBOAT7 rs641738</strong></td><td>인지질 대사</td><td>유럽인에서 MASLD 위험 증가</td></tr>
+        <tr><td><strong>GCKR, GPAM, APOE, MTARC1</strong></td><td>다양</td><td>MASLD 위험에 연관된 추가 변이들</td></tr>
       </table>
-    </div>
-    <p style="font-size:12px;color:#78909C;margin-top:8px">+ 낮음, ++ 중등도, +++ 높음, ? 불명확 | S1: 경도(&lt;10%), S2: 중등도(10–30%), S3: 중증(&gt;30%) 지방증</p>
-  </div>
-
-  <div class="card">
-    <div class="card-title">간생검의 역할과 한계</div>
-    <div class="grid2">
-      <div class="info-box info-teal">
-        <b>✅ 간생검이 필요한 경우</b><br>
-        • MASH 확진 (풍선변성·소엽염증·Mallory 소체 평가)<br>
-        • 다른 간질환(자가면역간염 등) 감별<br>
-        • 임상시험 참여 (NAS 점수 평가)<br>
-        • 비침습 검사로 진단이 불명확한 경우
-      </div>
-      <div class="info-box info-amber">
-        <b>⚠️ 임상 관리 목적으로는 불필요</b><br>
-        • 대부분의 MASLD 임상 관리 결정에 간생검 불필요<br>
-        • MASH 유무(섬유화와 별개)가 치료 결정을 바꾸지 않는 경우가 많음<br>
-        • 일상 모니터링 도구로 부적합 (침습적, 변동성 큼)
+      <div class="alert alert-info" style="margin-top:8px">
+        <span>ℹ️</span>
+        <div>RNA 간섭(RNAi) 요법으로 PNPLA3, HSD17B13을 표적하는 임상연구 진행 중. 현재 임상 유전자형 검사는 연구 목적 외 권고 없음.</div>
       </div>
     </div>
   </div>
 
+  <!-- 동반질환 진단 테이블 -->
   <div class="card">
-    <div class="card-title">치료반응 모니터링에서 NIT 활용</div>
-    <div class="info-box info-navy">
-      <b>주요 근거:</b><br>
-      • MRI-PDFF 기준 <strong>≥30% 상대 감소</strong> → MASH 관해 예측 (OR 5.45), 섬유화 회귀 연관 (OR 6.46)<br>
-      • ALT <strong>≥17 U/L 감소</strong> → 치료반응 예측 (FLINT trial 분석)<br>
-      • ELF·VCTE 변화는 조직학적 변화를 반영하지만 개인 수준에서는 변동성이 크다<br>
-      • 개인 수준 NIT 변화는 치료반응 판정에 제한적 — 코호트 수준에서 유의하다
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🩺</span> 동반질환별 평가 항목 상세 (Table 7)</div>
+      <span class="toggle">▾</span>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">유전인자 평가</div>
-    <p>유전인자는 MASLD 발생·진행에 주요 역할을 하며, 대사 원인과 상승 작용한다.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>유전 변이</th><th>방향</th><th>주요 연관성</th></tr></thead>
-        <tbody>
-          <tr><td>PNPLA3 p.I148M</td><td>위험 증가</td><td>진행성 MASH, 간경변, HCC. 폐경 후 여성에서 영향 더 큼</td></tr>
-          <tr><td>TM6SF2 p.E167K</td><td>위험 증가</td><td>진행성 MASH, 간경변, HCC</td></tr>
-          <tr><td>MBOAT7 rs641738</td><td>위험 증가</td><td>유럽계 MASLD 위험 증가</td></tr>
-          <tr><td>HSD17B13</td><td>보호</td><td>만성 간질환 위험 감소</td></tr>
-          <tr><td>APOE</td><td>보호</td><td>MASLD 진행 위험 감소</td></tr>
-          <tr><td>MTARC1</td><td>보호</td><td>간손상 위험 감소</td></tr>
-        </tbody>
+    <div class="card-body collapsed">
+      <table class="tbl">
+        <tr><th>동반질환</th><th>기본 평가</th><th>선택적 추가 검사*</th></tr>
+        <tr><td><strong>비만</strong></td><td>BMI, 허리둘레, 신장/체중 비율</td><td>체성분 분석, TSH/fT4 (갑상선기능저하 의심 시)</td></tr>
+        <tr><td><strong>T2D·인슐린 저항성</strong></td><td>공복혈당, HbA1c, OGTT 2시간 혈당</td><td>공복 인슐린·C-펩타이드, HOMA-IR, 혼합식 검사</td></tr>
+        <tr><td><strong>이상지질혈증</strong></td><td>공복 TG, 총콜레스테롤, LDL, HDL</td><td>비에스테르화 지방산(NEFA), ApoB, Lp(a) (평생 1회)</td></tr>
+        <tr><td><strong>신장질환</strong></td><td>혈청·소변 크레아티닌, 혈청 알부민, eGFR, 소변 알부민</td><td>—</td></tr>
+        <tr><td><strong>심혈관질환</strong></td><td>공복 요산, hsCRP, 페리틴, 혈압</td><td>24시간 활동혈압, 심초음파, NT-proBNP, 트랜스페린 포화도</td></tr>
+        <tr><td><strong>죽상경화증</strong></td><td>혈소판 포함 전혈구, Lp(a)</td><td>피브리노겐, 호모시스테인, 경동맥 내중막 두께, EchoDoppler, 관상동맥 석회화</td></tr>
+        <tr><td><strong>수면무호흡증</strong></td><td>목 둘레, Epworth 졸음증 척도</td><td>수면 다원검사, 야간 산소포화도, CPAP 시험</td></tr>
+        <tr><td><strong>PCOS</strong></td><td>LH, FSH, 테스토스테론, SHBG, 난소 초음파</td><td>—</td></tr>
       </table>
-    </div>
-    <div class="info-box info-teal" style="margin-top:12px">
-      <b>임상 권고:</b> 전문 센터에서 PNPLA3 변이 또는 다유전자 위험 점수(PRS) 평가는 위험 층화 개인화에 고려 가능 (LoE 3, open). 강한 가족력, 조기 발병, 대사 유발인자 없는 중증 표현형에서 차세대 유전체 분석(NGS/WES) 의뢰를 고려할 수 있다.
+      <small>* 임상 평가 및 사전 확률에 따라 선택적 시행</small>
     </div>
   </div>
-  </div>
-</section>
 
-<!-- ══════════════════════════════════════════
-     SECTION 6: HCC 감시
-══════════════════════════════════════════ -->
-<section id="s6" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">6</div>
-    <div class="section-title">HCC 감시 전략</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
+</div><!-- /screening -->
 
+<!-- ═══════════════ NIT ═══════════════ -->
+<div id="tab-nit" class="panel">
+
+  <div class="alert alert-info" style="margin-bottom:10px">
+    <span>📌</span>
+    <div>비침습 검사(NIT)는 대부분의 임상 상황에서 간 생검을 대체 가능. 간 생검은 MASH 확정 진단 및 다른 원인 감별 시 필요.</div>
+  </div>
+
+  <!-- NIT 추천 -->
   <div class="card">
-    <div class="card-title">섬유화 단계별 HCC 발생률 및 감시 권고</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>대상</th><th>HCC 연간 발생률</th><th>감시 권고</th><th>근거수준</th></tr></thead>
-        <tbody>
-          <tr><td>비경변성 MASLD (F0–F2)</td><td>0.08–0.63 /1,000 PY</td><td><span class="badge b-no">권장하지 않음</span></td><td>LoE 3, weak</td></tr>
-          <tr><td>비경변성 F3 섬유화</td><td>FIB-4 &gt;2.67: ~0.39/1,000 PY</td><td><span class="badge b-weak">개별 위험 평가 후 고려</span></td><td>LoE 4, weak</td></tr>
-          <tr><td>MASLD 관련 간경변</td><td>0.2–2.6 /100 PY</td><td><span class="badge b-strong">반드시 시행 (6개월 초음파)</span></td><td>LoE 3, strong</td></tr>
-          <tr><td>간경변 + 비만·초음파 불량</td><td>—</td><td><span class="badge b-open">AFP 병합 또는 MRI 전환</span></td><td>LoE 3, open</td></tr>
-        </tbody>
-      </table>
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>📊</span> 섬유화 평가 NIT — 종류 및 임계값 (Table 6)</div>
+      <span class="toggle">▾</span>
     </div>
-    <div class="info-box info-amber" style="margin-top:12px">
-      <b>HCC 감시 임계값:</b> 연간 발생률 ≥1.0–1.5%일 때 감시가 비용효율적이다. MASH 관련 간경변에서 초음파 단독 민감도는 45%로 낮아 AFP 병합(민감도 63%)이 권장된다.
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">MASLD 간경변에서 HCC 고위험 인자 (Table 8)</div>
-    <ul>
-      <li>T2DM + 비만 동반 (특히 병합 시)</li>
-      <li>고령</li>
-      <li>음주 병합 및/또는 흡연</li>
-      <li>FIB-4 &gt;3.25 (연간 HCC 위험 &gt;1%)</li>
-      <li>LSM &gt;10 kPa 이면서 시간 경과에 따른 LSM 상승</li>
-    </ul>
-    <div class="info-box info-teal" style="margin-top:12px">
-      <b>위험도 층화 도구:</b> aMAP, GALAD, THRI, HCC risk score, LiverRisk score 등 여러 모델이 있으나 phase III/IV 검증이 아직 없다. FIB-4 및 LSM의 종단적 변화가 HCC 위험 예측에 유용하다.
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SECTION 7: 생활습관 치료
-══════════════════════════════════════════ -->
-<section id="s7" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">7</div>
-    <div class="section-title">치료 — 생활습관 교정 (비약물 요법)</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <!-- Fig 3 -->
-  <div class="figure-wrap">
-    <div class="card-title" style="border:none;margin-bottom:16px">그림 3. MASLD 생활습관 관리 알고리즘 (Fig. 3 재현)</div>
-    <svg viewBox="0 0 760 500" xmlns="http://www.w3.org/2000/svg" style="max-width:100%">
-      <defs>
-        <marker id="ga" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
-        </marker>
-      </defs>
-      <!-- Left column: patient groups -->
-      <text x="100" y="22" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="600" fill="#0B2447">환자군</text>
-      <text x="290" y="22" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="600" fill="#0B2447">체중감량 목표</text>
-      <text x="550" y="22" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="600" fill="#0B2447">모든 MASLD에 공통 권고</text>
-      <!-- divider -->
-      <line x1="0" y1="30" x2="760" y2="30" stroke="#CFD8DC" stroke-width="0.5"/>
-      <!-- Group 1 -->
-      <rect x="8" y="38" width="168" height="62" rx="8" fill="#0B2447"/>
-      <text x="92" y="58" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="600" fill="#fff">과체중/비만 MASLD</text>
-      <text x="92" y="74" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.8)">BMI ≥25 (아시아 ≥23)</text>
-      <text x="92" y="90" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.8)">체중감량 식이 선택</text>
-      <line x1="176" y1="69" x2="200" y2="69" stroke="#555" stroke-width="1" marker-end="url(#ga)"/>
-      <rect x="200" y="38" width="196" height="62" rx="8" fill="#E0F5F1" stroke="#1B9C85" stroke-width="1"/>
-      <text x="298" y="57" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#0D7264">≥5% → 간지방 감소</text>
-      <text x="298" y="72" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#1B9C85">7–10% → MASH·염증 개선</text>
-      <text x="298" y="87" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#1B9C85">≥10% → 섬유화 개선</text>
-      <!-- Group 2 -->
-      <rect x="8" y="114" width="168" height="62" rx="8" fill="#163172"/>
-      <text x="92" y="134" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="600" fill="#fff">고도비만 MASLD</text>
-      <text x="92" y="150" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.8)">BMI ≥35 (아시아 ≥30)</text>
-      <text x="92" y="166" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.8)">Class II/III 비만</text>
-      <line x1="176" y1="145" x2="200" y2="145" stroke="#555" stroke-width="1" marker-end="url(#ga)"/>
-      <rect x="200" y="114" width="196" height="62" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="1"/>
-      <text x="298" y="133" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#E65100">Incretin 기반 체중감량제</text>
-      <text x="298" y="149" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#795548">semaglutide, tirzepatide</text>
-      <text x="298" y="165" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#795548">또는 비만대사수술 고려</text>
-      <!-- Group 3 -->
-      <rect x="8" y="190" width="168" height="60" rx="8" fill="#1B9C85"/>
-      <text x="92" y="209" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="600" fill="#fff">정상체중 MASLD</text>
-      <text x="92" y="225" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.85)">BMI &lt;25 (아시아 &lt;23)</text>
-      <text x="92" y="241" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.85)">인슐린저항성·내장비만 확인</text>
-      <line x1="176" y1="220" x2="200" y2="220" stroke="#555" stroke-width="1" marker-end="url(#ga)"/>
-      <rect x="200" y="190" width="196" height="60" rx="8" fill="#E0F5F1" stroke="#1B9C85" stroke-width="1"/>
-      <text x="298" y="209" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#0D7264">3–5% 감량 목표</text>
-      <text x="298" y="225" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#1B9C85">MASLD 관해 달성 가능</text>
-      <text x="298" y="241" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#1B9C85">식이 질 개선이 핵심</text>
-      <!-- RIGHT SIDE: common recommendations -->
-      <!-- Diet box -->
-      <rect x="412" y="38" width="340" height="70" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
-      <text x="582" y="56" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#1B5E20">🥗 식이 권고 (LoE 2, strong)</text>
-      <text x="582" y="72" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#2E7D32">지중해식 식단 우선 | 가공식품·가당음료 최소화</text>
-      <text x="582" y="87" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#2E7D32">적색육·초가공식품 감소 | 비가공 식품 증가</text>
-      <text x="582" y="100" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#558B2F">과당·가당음료: MASLD 발생과 용량반응 관계</text>
-      <!-- Exercise box -->
-      <rect x="412" y="118" width="340" height="68" rx="8" fill="#E3F2FD" stroke="#1976D2" stroke-width="1"/>
-      <text x="582" y="136" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#0D47A1">🏃 운동 권고 (LoE 1, strong)</text>
-      <text x="582" y="152" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#1565C0">중강도 ≥150분/주  또는  고강도 ≥75분/주</text>
-      <text x="582" y="167" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#1565C0">유산소 + 저항운동 병합 권장</text>
-      <text x="582" y="180" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#1976D2">체중감량 없이도 간지방 감소 가능 | 좌식생활 최소화</text>
-      <!-- Other habits box -->
-      <rect x="412" y="196" width="340" height="56" rx="8" fill="#FCE4EC" stroke="#C62828" stroke-width="1"/>
-      <text x="582" y="215" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#880E4F">🚭 기타 생활습관</text>
-      <text x="582" y="231" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#AD1457">금연 (HCC 위험 OR 1.55 증가)</text>
-      <text x="582" y="244" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#AD1457">음주 자제 | 진행 섬유화·간경변: 완전 금주</text>
-      <!-- Cirrhosis box -->
-      <rect x="8" y="266" width="380" height="78" rx="8" fill="#FFEBEE" stroke="#C62828" stroke-width="1"/>
-      <text x="198" y="285" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#B71C1C">MASH 간경변 특수 고려사항</text>
-      <text x="198" y="302" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#C62828">근감소증/비대상 간경변: 고단백 식이(1.2–1.5 g/kg/일) + 취침 전 간식</text>
-      <text x="198" y="318" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#C62828">보상성 간경변+비만: 적절한 감량 + 고단백 + 운동</text>
-      <text x="198" y="334" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#C62828">에너지: 35 kcal/실제체중 kg/일 | 식사 4–6시간 간격 유지</text>
-      <!-- Implementation box -->
-      <rect x="400" y="266" width="352" height="78" rx="8" fill="#EDE7F6" stroke="#6A1B9A" stroke-width="1"/>
-      <text x="576" y="285" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#4A148C">실행 전략</text>
-      <text x="576" y="301" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#6A1B9A">다학제 팀 (간과·내분비과·영양사·재활의학과)</text>
-      <text x="576" y="317" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#6A1B9A">행동치료 병행 | 개인 맞춤형 현실적 목표 설정</text>
-      <text x="576" y="333" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#6A1B9A">경제적 제약·문화·선호도 고려</text>
-      <!-- Long-term goals -->
-      <rect x="8" y="358" width="744" height="50" rx="8" fill="#0B2447"/>
-      <text x="380" y="377" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="600" fill="#fff">장기 목표</text>
-      <text x="380" y="396" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="rgba(255,255,255,.85)">삶의 질 향상  |  심장대사 이점  |  간경변·HCC·T2DM·심혈관질환 예방</text>
-      <!-- Notes -->
-      <rect x="8" y="420" width="744" height="70" rx="6" fill="#F5F7FA" stroke="#CFD8DC" stroke-width="0.5"/>
-      <text x="380" y="440" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">☕ 커피: 관찰연구에서 MASLD 및 간섬유화 위험 감소, HCC 사망 감소와 연관 (LoE 4) — 임상 권고 수준은 아님</text>
-      <text x="380" y="458" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">❌ 건강식품 보충제 (뉴트라슈티컬): 근거 불충분 — 권장하지 않음 (LoE 2, open recommendation)</text>
-      <text x="380" y="474" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">⚠️ 케토제닉 식이: MASLD에서 안전성·유효성 근거 불충분 | 간헐적 단식: 칼로리 제한 대비 추가 이득 불명확</text>
-    </svg>
-    <div class="figure-caption">그림 3. MASLD 생활습관 관리 알고리즘. BMI 기준: 비아시아인 과체중 25–29.9, 비만 ≥30; 아시아인 과체중 23–24.9, 비만 ≥25 kg/m²</div>
-  </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SECTION 8: 약물치료
-══════════════════════════════════════════ -->
-<section id="s8" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">8</div>
-    <div class="section-title">치료 — 약물요법</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <div class="figure-wrap">
-    <div class="card-title" style="border:none;margin-bottom:16px">그림 4. MASLD/MASH 약물치료 권고 — 간섬유화 단계 및 동반질환별 (Fig. 4 재현)</div>
-    <svg viewBox="0 0 760 430" xmlns="http://www.w3.org/2000/svg" style="max-width:100%">
-      <defs>
-        <marker id="da" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
-        </marker>
-      </defs>
-      <!-- Header row -->
-      <rect x="0" y="0" width="760" height="36" rx="6" fill="#0B2447"/>
-      <text x="380" y="22" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="13" font-weight="600" fill="#fff">생활습관 교정 이후 추가 약물치료 선택 (동반질환 및 섬유화 단계 기반)</text>
-      <!-- Column headers -->
-      <text x="95" y="54" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#0B2447">질환 단계</text>
-      <text x="265" y="54" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#6A1B9A">MASH 표적치료</text>
-      <text x="420" y="54" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#0D47A1">T2DM 동반</text>
-      <text x="555" y="54" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#1B5E20">이상지질혈증</text>
-      <text x="680" y="54" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#E65100">비만</text>
-      <line x1="0" y1="60" x2="760" y2="60" stroke="#CFD8DC" stroke-width="0.5"/>
-      <!-- Row 1: F0-F3 -->
-      <rect x="4" y="68" width="182" height="132" rx="8" fill="#163172"/>
-      <text x="95" y="92" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#fff">비경변성</text>
-      <text x="95" y="110" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" fill="rgba(255,255,255,.9)">MASLD / MASH</text>
-      <text x="95" y="128" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#6ee7d8" font-weight="600">F0 – F3</text>
-      <text x="95" y="148" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="rgba(255,255,255,.6)">(섬유화 없음 ~ 심한 섬유화)</text>
-      <!-- Resmetirom -->
-      <rect x="194" y="68" width="148" height="132" rx="8" fill="#EDE7F6" stroke="#6A1B9A" stroke-width="1"/>
-      <text x="268" y="92" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#4A148C">Resmetirom</text>
-      <text x="268" y="110" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#6A1B9A">F2/F3에서</text>
-      <text x="268" y="125" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#6A1B9A">현지 승인 시 고려</text>
-      <text x="268" y="140" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#6A1B9A">80 mg (&lt;100 kg)</text>
-      <text x="268" y="155" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#6A1B9A">100 mg (≥100 kg)</text>
-      <text x="268" y="170" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#7B1FA2">LoE 2 ✅ strong</text>
-      <text x="268" y="184" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#7B1FA2">THRβ 선택적 작용제</text>
-      <!-- T2DM F0-F3 -->
-      <rect x="350" y="68" width="142" height="132" rx="8" fill="#E3F2FD" stroke="#1976D2" stroke-width="1"/>
-      <text x="421" y="92" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="700" fill="#0D47A1">GLP1RA</text>
-      <text x="421" y="108" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#1565C0">semaglutide</text>
-      <text x="421" y="122" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#1565C0">liraglutide, dulaglutide</text>
-      <text x="421" y="137" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="700" fill="#0D47A1">SGLT2 억제제</text>
-      <text x="421" y="152" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#1565C0">empagliflozin, dapagliflozin</text>
-      <text x="421" y="166" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#1565C0">Metformin</text>
-      <text x="421" y="181" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#546E7A">eGFR &gt;30 ml/min</text>
-      <!-- Dyslipidemia F0-F3 -->
-      <rect x="500" y="68" width="112" height="132" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
-      <text x="556" y="120" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="13" font-weight="700" fill="#1B5E20">스타틴</text>
-      <text x="556" y="140" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#2E7D32">(CVD 예방</text>
-      <text x="556" y="155" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#2E7D32">지침 따름)</text>
-      <text x="556" y="172" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#4CAF50">LoE 1 ✅ strong</text>
-      <!-- Obesity F0-F3 -->
-      <rect x="620" y="68" width="136" height="132" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="1"/>
-      <text x="688" y="92" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="700" fill="#E65100">GLP1RA</text>
-      <text x="688" y="108" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#795548">semaglutide</text>
-      <text x="688" y="122" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#795548">liraglutide</text>
-      <text x="688" y="137" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="700" fill="#E65100">이중 작용제</text>
-      <text x="688" y="152" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#795548">tirzepatide</text>
-      <text x="688" y="167" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="700" fill="#E65100">비만대사수술</text>
-      <text x="688" y="183" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#9E6B00">BMI ≥35 적응증 시</text>
-      <!-- Row 2: F4 cirrhosis -->
-      <rect x="4" y="212" width="182" height="100" rx="8" fill="#B71C1C"/>
-      <text x="95" y="238" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#fff">보상성 간경변</text>
-      <text x="95" y="256" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#ffcdd2" font-weight="600">F4</text>
-      <text x="95" y="276" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.8)">간이식 적응증 여부</text>
-      <text x="95" y="292" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="rgba(255,255,255,.8)">간암 발생 여부 모니터링</text>
-      <!-- MASH-targeted F4 -->
-      <rect x="194" y="212" width="148" height="100" rx="8" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1"/>
-      <text x="268" y="240" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#37474F">권장 없음</text>
-      <text x="268" y="258" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#546E7A">Resmetirom: 간경변</text>
-      <text x="268" y="272" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#546E7A">단계 적응증 없음</text>
-      <text x="268" y="290" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#78909C">LoE 5 weak</text>
-      <!-- T2DM F4 -->
-      <rect x="350" y="212" width="142" height="100" rx="8" fill="#E3F2FD" stroke="#1976D2" stroke-width="1"/>
-      <text x="421" y="234" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" font-weight="600" fill="#0D47A1">GLP1RA (Child A)</text>
-      <text x="421" y="250" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#1565C0">SGLT2i (Child A·B)</text>
-      <text x="421" y="265" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#1565C0">Metformin*</text>
-      <text x="421" y="280" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#C62828">Insulin (비대상 시)</text>
-      <text x="421" y="298" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#9E9E9E">SU: 저혈당 위험↑ 회피</text>
-      <!-- Dyslipidemia F4 -->
-      <rect x="500" y="212" width="112" height="100" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
-      <text x="556" y="250" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="12" font-weight="700" fill="#1B5E20">스타틴</text>
-      <text x="556" y="266" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#2E7D32">보상성 간경변</text>
-      <text x="556" y="280" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#2E7D32">포함 사용 가능</text>
-      <text x="556" y="298" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#C62828">고용량 비대상 ⚠</text>
-      <!-- Obesity F4 -->
-      <rect x="620" y="212" width="136" height="100" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="1"/>
-      <text x="688" y="234" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="700" fill="#E65100">GLP1RA</text>
-      <text x="688" y="250" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#795548">semaglutide</text>
-      <text x="688" y="264" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#795548">liraglutide</text>
-      <text x="688" y="279" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" font-weight="600" fill="#E65100">수술: 신중 평가</text>
-      <text x="688" y="295" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#9E6B00">CSPH 배제 필수</text>
-      <!-- Notes at bottom -->
-      <rect x="0" y="326" width="760" height="96" rx="6" fill="#F5F7FA" stroke="#CFD8DC" stroke-width="0.5"/>
-      <text x="380" y="346" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11.5" font-weight="600" fill="#0B2447">약물별 핵심 근거 정리</text>
-      <text x="380" y="364" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">Resmetirom (MAESTRO-NASH): F2/F3 MASH에서 MASH 관해·섬유화 회귀 유의하게 입증 — 유일한 MASH 표적 치료제 (Phase III)</text>
-      <text x="380" y="381" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">GLP1RA: MASH 표적 아님 (Phase III 조직학 데이터 미완) | T2DM·비만 적응증으로 사용 시 CVD·신장 이득 및 간지방 감소 기대</text>
-      <text x="380" y="398" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#4A5568">Pioglitazone: 안전, 대규모 Phase III 없음, 유럽 일부 국가 시장 철수 | Vitamin E: Phase III 부재, 전립선암 위험 논쟁 → 권장 안함</text>
-      <text x="380" y="414" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="10.5" fill="#78909C">* Metformin: eGFR &gt;30 ml/min이고 비대상 간경변 아닌 경우만 사용 가능</text>
-    </svg>
-    <div class="figure-caption">그림 4. MASLD/MASH 약물치료 권고 알고리즘. GLP1RA = glucagon-like peptide-1 receptor agonist; SGLT2i = sodium-glucose cotransporter-2 inhibitor; CSPH = 임상적으로 유의한 문맥압 항진증</div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Resmetirom 주요 정보</div>
-    <div class="grid2">
-      <div>
-        <h4>기전 및 적응증</h4>
-        <ul>
-          <li>간 선택적 <strong>THRβ1 (갑상선호르몬 수용체 β1) 작용제</strong></li>
-          <li>간 지방분해 촉진, 지방신생합성 억제, TGF-β 신호 억제(항섬유화)</li>
-          <li>적응증: 비경변성 MASH + 섬유화 <strong>≥F2</strong></li>
-          <li>미국 FDA 2024년 3월 가속 승인 (국내 미승인 주의)</li>
-        </ul>
-        <h4>투여 용량</h4>
-        <ul>
-          <li>체중 &lt;100 kg: <strong>80 mg/일</strong></li>
-          <li>체중 ≥100 kg: <strong>100 mg/일</strong></li>
-          <li>CYP2C8 억제제 병용 시 용량 감소</li>
-        </ul>
-      </div>
-      <div>
-        <h4>MAESTRO-NASH Phase III 결과</h4>
-        <ul>
-          <li>MASH 관해 (섬유화 악화 없이): 위약 대비 유의하게 우수</li>
-          <li>섬유화 ≥1단계 회귀: 위약 대비 유의하게 우수</li>
-          <li>LDL 콜레스테롤 및 TG 감소, 혈당·체중 중립</li>
-        </ul>
-        <h4>주요 부작용 및 모니터링</h4>
-        <ul>
-          <li>설사 (33%), 구역 (22%), 소양증 (11%), 구토 (11%)</li>
-          <li>치료반응 예측: MRI-PDFF <strong>≥30% 감소</strong>, SHBG <strong>≥120% 증가</strong></li>
-          <li>갑상선 기능·SHBG·골밀도 모니터링 필요</li>
-          <li>70–80%는 조직학적 반응 기준 미충족 — 중단 기준 미확립</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SECTION 9: 수술
-══════════════════════════════════════════ -->
-<section id="s9" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">9</div>
-    <div class="section-title">치료 — 비만대사수술 및 내시경</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <div class="card">
-    <div class="card-title">비만대사수술 적응증 및 권고</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>대상</th><th>권고</th><th>근거수준</th><th>합의율</th></tr></thead>
-        <tbody>
-          <tr><td>비경변성 MASLD + 수술 적응증 해당 (BMI ≥35 또는 T2DM·고혈압 조절 불량 시 BMI ≥30)</td><td><span class="badge b-strong">강한 권고 — 장기적 간 이득, T2DM 관해, 심장대사 개선</span></td><td>LoE 3</td><td>98%</td></tr>
-          <tr><td>보상성 간경변 + 적응증 해당</td><td><span class="badge b-weak">약한 권고 — 다학제팀 신중 평가, CSPH 배제 필수</span></td><td>LoE 4</td><td>100%</td></tr>
-          <tr><td>비대상 간경변</td><td><span class="badge b-no">금기 — 수술 사망위험 10배 증가</span></td><td>LoE 4</td><td>100%</td></tr>
-          <tr><td>내시경적 비만대사 시술</td><td><span class="badge b-weak">현재 권장 불가 — 검증 데이터 부족</span></td><td>LoE 4</td><td>100%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="info-box info-teal" style="margin-top:12px">
-      <b>BRAVES RCT 결과:</b> Roux-en-Y 위우회술 또는 슬리브 위절제술 후 1년 MASH 관해율 <strong>55%</strong> vs 생활습관군 15%. 섬유화 ≥1단계 개선: 수술군 37–39% vs 생활습관군 23%. 단, 수술 후에도 진행 섬유화(교량 섬유화·간경변)는 47%에서 5년 후에도 지속될 수 있다.
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     SECTION 10: 간경변·이식
-══════════════════════════════════════════ -->
-<section id="s10" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">10</div>
-    <div class="section-title">말기 간질환, 문맥압 항진증, 간이식</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
-
-  <div class="card">
-    <div class="card-title">MASH 간경변에서 약물 사용 지침</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>약물</th><th>사용 지침</th><th>주의사항</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Metformin</strong></td><td>Child-Pugh A + eGFR &gt;30: 가능 (LoE 3, strong)</td><td>비대상 간경변 + 신부전: 금기 (젖산산증)</td></tr>
-          <tr><td><strong>Sulfonylurea</strong></td><td>간 비대상 시 회피 (LoE 4, weak)</td><td>저혈당 위험 증가</td></tr>
-          <tr><td><strong>GLP1RA</strong></td><td>Child-Pugh A: 적응증에 따라 사용 가능 (LoE 2)</td><td>근감소증에 미치는 영향 추가 연구 필요</td></tr>
-          <tr><td><strong>SGLT2 억제제</strong></td><td>Child-Pugh A·B: 사용 가능 (LoE 4)</td><td>C: 약물 노출량 67–111% 증가 — 주의</td></tr>
-          <tr><td><strong>스타틴</strong></td><td>보상성 간경변 포함 가능; CVD 지침 따름 (LoE 1, strong)</td><td>고용량 + 비대상 간경변: 간독성·횡문근융해 위험</td></tr>
-          <tr><td><strong>Insulin</strong></td><td>비대상 간경변에서 선호</td><td>저혈당 주의</td></tr>
-        </tbody>
+    <div class="card-body">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">혈액 기반 NIT 또는 영상 기반 NIT → ALT/AST 단독보다 섬유화 진단 정확도 우수</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">단계적 접근: <strong>① FIB-4 → ② VCTE (또는 대안)</strong>. ELF는 영상 대체 또는 보완 가능</div>
+        </li>
+      </ul>
+      <table class="tbl" style="margin-top:10px">
+        <tr><th>검사</th><th>대상 표적</th><th>배제 cut-off (F3)</th><th>진단 cut-off (F3)</th><th>예후 예측</th></tr>
+        <tr><td><strong>FIB-4</strong></td><td>간세포 스트레스·비장비대</td><td>&lt;1.3</td><td>&gt;2.67</td><td>++</td></tr>
+        <tr><td><strong>NFS</strong></td><td>간세포 스트레스·대사 부담</td><td>&lt;−1.455</td><td>&gt;0.676</td><td>++</td></tr>
+        <tr><td><strong>ELF</strong></td><td>콜라겐 대사</td><td>&lt;7.7</td><td>&gt;9.8</td><td>+++</td></tr>
+        <tr><td><strong>VCTE (LSM)</strong></td><td>섬유화·세포외 기질</td><td>&lt;8.0 kPa</td><td>&gt;12 kPa</td><td>+++</td></tr>
+        <tr><td><strong>MRE</strong></td><td>섬유화·세포외 기질</td><td>F2: &lt;3.14 kPa</td><td>F4: &gt;4.45 kPa</td><td>+++</td></tr>
+        <tr><td><strong>FAST score</strong></td><td>간세포 스트레스·섬유화·지방</td><td>&lt;0.35</td><td>&gt;0.67</td><td>++</td></tr>
+        <tr><td><strong>ADAPT</strong></td><td>콜라겐 대사·비장비대</td><td>&lt;4.46</td><td>&gt;7.15</td><td>?</td></tr>
       </table>
     </div>
   </div>
 
+  <!-- 지방증 정량 -->
   <div class="card">
-    <div class="card-title">문맥압 항진증 비침습 평가 (Baveno VII 기준)</div>
-    <div class="grid2">
-      <div class="info-box info-teal">
-        <b>CSPH 배제 (rule-out)</b><br>
-        LSM &lt;15 kPa <strong>AND</strong> 혈소판 &gt;150×10⁹/L → CSPH 가능성 낮음
-      </div>
-      <div class="info-box info-red">
-        <b>CSPH 진단 (rule-in)</b><br>
-        LSM &gt;25 kPa → CSPH (단, BMI ≥30 환자에서 위양성 가능 — 비만 시 적용 주의)
-      </div>
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🔬</span> 간 지방증 정량 평가</div>
+      <span class="toggle">▾</span>
     </div>
-    <div class="info-box info-navy" style="margin-top:12px">
-      <b>내시경 선별 기준:</b> 보상성 진행 만성 간질환에서 LSM ≥20 kPa 또는 혈소판 &lt;150×10⁹/L → 이미 NSBB 기준 충족하지 않는 경우 상부위장관 내시경 시행. CSPH 존재 시 → 비선택적 베타차단제(NSBB) 시작 가능.
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">간이식 전 평가 및 이식 후 관리</div>
-    <div class="grid2">
-      <div>
-        <h4>이식 전 심혈관 평가 (단계적)</h4>
-        <ol>
-          <li>기본: 병력·심전도·경흉부심초음파</li>
-          <li>의심 소견 또는 연령 &gt;50세 또는 CVD 위험인자 ≥2개 시: 도부타민 부하 심초음파 또는 관상동맥CT</li>
-          <li>양성 소견 또는 임상적 의심 시: 심장내과 의뢰, 관상동맥조영술</li>
-        </ol>
-        <div class="info-box info-amber" style="margin-top:10px">MASLD 관련 이식 환자는 이식 후 1년, 특히 수술 전후기에 주요 심혈관 사건 위험이 가장 높다.</div>
-      </div>
-      <div>
-        <h4>이식 후 MASLD 재발</h4>
-        <ul>
-          <li>대사증후군 재발: 5년 내 <strong>86%</strong></li>
-          <li>지방증 재발: <strong>80%</strong></li>
-          <li>MASH 재발: <strong>60%</strong></li>
-          <li>진행 섬유화(F3–F4) 재발: <strong>20%</strong></li>
-        </ul>
-        <div class="info-box info-teal" style="margin-top:10px">이식 후 표준 비약물·약물 치료 보편 시행. GLP1RA 고려 가능 (면역억제제 흡수 영향 주의). 스타틴은 면역억제제와 상호작용 낮아 사용 가능.</div>
+    <div class="card-body collapsed">
+      <table class="tbl">
+        <tr><th>방법</th><th>원리</th><th>지방증 단계</th><th>비고</th></tr>
+        <tr><td>초음파 (표준)</td><td>간 에코 증가</td><td>S1이상 검출</td><td>반정량, 비만 시 제한</td></tr>
+        <tr><td>VCTE — CAP</td><td>초음파 감쇠</td><td>S1 ≥248, S2 ≥268, S3 ≥280 dB/m</td><td>LSM과 동시 측정</td></tr>
+        <tr><td>MRI-PDFF</td><td>지방 양성자 밀도분율</td><td>S1 ≥5%, S2 11–18%, S3 16–23%</td><td>비침습 금표준; ≥30% 감소 → MASH 해소 예측</td></tr>
+        <tr><td>¹H-MRS</td><td>자기공명 분광</td><td>정밀 정량</td><td>저지방 함량 측정에 가장 민감</td></tr>
+      </table>
+      <div class="alert alert-info" style="margin-top:8px">
+        <span>💡</span>
+        <div>MRI-PDFF 30% 이상 상대적 감소 → 지방간염 해소(MASH resolution) 예측 OR 5.45. 치료 반응 모니터링에서 중요한 대리 지표로 활용.</div>
       </div>
     </div>
   </div>
 
+  <!-- 간 생검 -->
   <div class="card">
-    <div class="card-title">간경변 영양 지침 (EASL·ESPEN 권고 요약)</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>구분</th><th>에너지</th><th>단백질</th><th>식사 패턴</th></tr></thead>
-        <tbody>
-          <tr><td>일반 간경변</td><td>35 kcal/실제체중 kg/일</td><td>1.2–1.5 g/kg/일</td><td>3식 + 3간식, 취침 전 간식</td></tr>
-          <tr><td>비만 간경변 (BMI &gt;30)</td><td>중등도 칼로리 제한 (-500~800 kcal/일)</td><td>1.2–1.5 g/kg ABW/일</td><td>단백질 우선, 근육량 유지</td></tr>
-          <tr><td>근감소증/비대상 간경변</td><td>35 kcal/kg/일 이상</td><td>&gt;1.5 g/kg/일 (분지쇄아미노산 풍부)</td><td>4–6시간 간격, 취침 전 간식 필수</td></tr>
-        </tbody>
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🔪</span> 간 생검의 역할</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <div class="stmt-item">비침습 검사는 MASH의 미세구조적 특징(풍선변성·소엽 염증)을 평가할 수 없음 <span class="loe-2">LoE 2</span></div>
+      <div class="stmt-item">대부분의 MASLD 환자에서 임상적 관리를 위해 생검은 불필요 <span class="loe-1">LoE 1</span></div>
+      <ul class="rec-list" style="margin-top:8px">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-1">LoE 1</span></div>
+          <div class="rec-text">임상 연구 및 치료 반응 평가 시 생검 가능</div>
+        </li>
+      </ul>
+      <div class="alert alert-warn" style="margin-top:8px">
+        <span>⚠️</span>
+        <div>생검의 주요 적응증: ① MASH 확정 진단 ② 자가면역 간염 등 다른 원인 감별 ③ 임상시험 등록(NAS score 평가) ④ Resmetirom 치료 선택 시 (일부 상황)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 치료 반응 모니터링 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>📉</span> 치료 반응 모니터링을 위한 NIT</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <div class="stmt-item">NIT 변화는 조직학적 치료 반응과 연관되지만, 최적 NIT는 중재 유형에 따라 다름 <span class="loe-2">LoE 2</span></div>
+      <div class="stmt-item">MRI-PDFF ≥30% 상대 감소 → 지방간염 해소 연관 (임상시험 설정에서) <span class="loe-2">LoE 2</span></div>
+      <div class="stmt-item">ALT 감소 ≥17 U/L → 조직학적 반응(NAS ≥2 감소, 섬유화 비악화) 예측 (FLINT trial) <span class="loe-2">LoE 2</span></div>
+      <ul class="rec-list" style="margin-top:8px">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-5">LoE 5</span></div>
+          <div class="rec-text">개별 수준에서 NIT 반복 시행으로 섬유화 진행 평가 가능 — 단, 치료 반응 정보는 제한적</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /nit -->
+
+<!-- ═══════════════ LIFESTYLE ═══════════════ -->
+<div id="tab-lifestyle" class="panel">
+
+  <!-- 체중 감량 목표 -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>⚖️</span> 체중 감량 목표 및 간 개선 효과</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-1">LoE 1</span></div>
+          <div class="rec-text">식이·행동 요법 통한 체중 감량 → 간 손상 개선 (조직학적 또는 비침습 평가 기준)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">과체중 MASLD: <strong>≥5% 감량</strong> → 지방증 감소; <strong>7–10%</strong> → 염증 개선; <strong>≥10%</strong> → 섬유화 개선</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">정상 체중 MASLD → 식이·운동 개입으로 간 지방 감소 권고</div>
+        </li>
+      </ul>
+      <div class="alert alert-warn" style="margin-top:8px">
+        <span>⚠️</span>
+        <div>현실적 한계: ≥5% 체중 감량 달성 비율은 제한적이며 장기 유지 어려움. 장기 (≥2년) 생활습관 중재 무작위 대조시험 데이터 부족.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 식이 -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🥗</span> 식이 권고</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text"><strong>지중해식 식단</strong> 패턴 권고 — 올리브유·채소·과일·견과류·통곡물·생선 위주, 가공육·당류·포화지방 최소화</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">가당 음료(과당 포함) 섭취 금지 — 주 ≥4회 섭취 시 MASLD 위험 45%↑</div>
+        </li>
+      </ul>
+      <div class="acc" style="margin-top:8px">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>📋 피해야 할 식이 vs 권장 식이</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <div class="grid2" style="gap:10px">
+            <div>
+              <div style="color:var(--red);font-weight:600;margin-bottom:6px">❌ 회피</div>
+              <ul style="font-size:12px;line-height:2;list-style:none">
+                <li>• 가당 음료 (과당, 청량음료)</li>
+                <li>• 적색육·가공육</li>
+                <li>• 초가공식품 (포화지방·당류 고함유)</li>
+                <li>• 포화지방 (간 지방증 악화)</li>
+                <li>• 알코올 (고도 섬유화 시 완전 금지)</li>
+              </ul>
+            </div>
+            <div>
+              <div style="color:var(--green);font-weight:600;margin-bottom:6px">✅ 권장</div>
+              <ul style="font-size:12px;line-height:2;list-style:none">
+                <li>• 올리브유·채소·과일 (주스 제외)</li>
+                <li>• 견과류·두류·통곡물</li>
+                <li>• 생선·가금류 (가공 없는 것)</li>
+                <li>• 저지방 유제품</li>
+                <li>• 커피 (관찰 연구: 섬유화·HCC 감소 연관)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 운동 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🏃</span> 신체활동 및 운동</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-1">LoE 1</span></div>
+          <div class="rec-text">운동 권고 — 유산소 150분/주 (중강도) 또는 75분/주 (고강도); 개인 선호·능력에 맞게 조정</div>
+        </li>
+      </ul>
+      <div class="grid2" style="gap:8px;margin-top:8px">
+        <div class="acc">
+          <div class="acc-hdr" onclick="toggleAcc(this)">
+            <span>🏋️ 운동 종류별 효과</span>
+            <div class="acc-right"><span>▸</span></div>
+          </div>
+          <div class="acc-body">
+            <ul style="font-size:12px;line-height:1.8;list-style:none">
+              <li>• <strong>유산소 운동</strong>: 간 지방증 감소 탁월</li>
+              <li>• <strong>저항 운동</strong>: 근육량 유지 + 지방증 개선</li>
+              <li>• <strong>HIIT</strong>: 중강도 지속 운동과 동등</li>
+              <li>• <strong>유산소+저항 병합</strong>이 선호됨</li>
+              <li>• "주말 전사(weekend warrior)" 패턴도 심혈관 이점</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="stmt-item">운동은 체중 감량 없이도 간 지방증 감소 — 독립 효과 (LoE 2)</div>
+          <div class="stmt-item">조직학적 개선 근거는 심혈관대사 효과보다 강도 낮음 (LoE 5)</div>
+          <div class="alert alert-warn" style="margin-top:6px"><span>⚠️</span><div>좌식 생활 자체가 MASLD 독립 예측인자. 앉아있는 시간 최소화 별도 권고.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nutraceuticals -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>💊</span> 건강보조식품 (Nutraceuticals)</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">건강보조식품 — 간 손상·섬유화·임상 결과 개선 근거 불충분; 안전성도 미확립 → <strong>권고 불가</strong></div>
+        </li>
+      </ul>
+      <div class="stmt-item">커피 (카페인 유무 무관): 관찰 연구에서 MASLD·섬유화·HCC 감소 연관 — 단 RCT 결과 부정적·불일치 (LoE 4)</div>
+      <div class="stmt-item">프로바이오틱스: ALT·AST·지방증 감소 (소규모 RCT) — 장기 간 임상 결과 근거 부족</div>
+    </div>
+  </div>
+
+  <!-- 비만수술 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🔧</span> 비만대사 수술</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">비간경변 MASLD + 비만수술 적응증 → 수술 고려 (T2D 관해, 심혈관위험 감소, 간 장기 이점)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text">보상 간경변 + 비만수술 적응증 → 다학제팀 신중 평가 후 수술 고려 가능</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text">내시경적 비만시술 (위내풍선 등) — MASH 표적 치료로 아직 권고 불가 (추가 검증 필요)</div>
+        </li>
+      </ul>
+      <div class="acc" style="margin-top:8px">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>📊 BRAVES 무작위 대조시험 결과</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <table class="tbl">
+            <tr><th>결과 지표</th><th>Roux-en-Y 위우회술</th><th>소매위절제술</th><th>생활습관 중재</th></tr>
+            <tr><td>MASH 해소 (섬유화 비악화)</td><td>55%</td><td>55%</td><td>15%</td></tr>
+            <tr><td>섬유화 개선 ≥1단계</td><td>37%</td><td>39%</td><td>23%</td></tr>
+            <tr><td>심각 부작용</td><td colspan="2" style="text-align:center">약 6%</td><td>낮음</td></tr>
+          </table>
+          <small>* 대부분 경도 섬유화 대상. 5년 추적에서도 MASH 완전 해소 84% (관찰 연구)</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /lifestyle -->
+
+<!-- ═══════════════ PHARMA ═══════════════ -->
+<div id="tab-pharma" class="panel">
+
+  <!-- 핵심 원칙 -->
+  <div class="alert alert-success" style="margin-bottom:10px">
+    <span>✅</span>
+    <div><strong>현재 유일한 MASH 표적 승인 약제: Resmetirom</strong> (미국 2024년 3월 가속 승인). 동반 T2D·비만·이상지질혈증에 대한 약제는 각 적응증에 따라 사용.</div>
+  </div>
+
+  <!-- Resmetirom -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🌟</span> Resmetirom — MASH 표적 치료제</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="tag-row">
+        <span class="pill pill-new">MAESTRO-NASH Phase III</span>
+        <span class="pill pill-key">THRβ 선택적 작용제</span>
+        <span class="pill pill-key">간 지향성 경구제</span>
+      </div>
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text"><strong>비간경변 MASH + 유의한 섬유화 (F2 이상)</strong> → 현지 승인 및 label에 따라 resmetirom 치료 고려 (지방간염 해소 + 섬유화 개선 입증)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">비간경변 + (A) 고도 섬유화, 또는 (B) 비침습 패널로 확인된 at-risk MASH, 또는 (C) 탄성검사·바이오마커 기반 간 관련 위험 → resmetirom 고려 가능</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-5">LoE 5</span></div>
+          <div class="rec-text">간경변 단계 MASH → MASH 표적 약물치료 현재 권고 불가</div>
+        </li>
+      </ul>
+      <div class="acc" style="margin-top:8px">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>💊 용량·부작용·모니터링</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <table class="tbl">
+            <tr><th>항목</th><th>내용</th></tr>
+            <tr><td>용량</td><td>체중 &lt;100 kg: 80 mg/일; ≥100 kg: 100 mg/일</td></tr>
+            <tr><td>주요 부작용</td><td>설사 (최대 33%), 오심 (최대 22%), 가려움증 (최대 11%), 구토 (최대 11%)</td></tr>
+            <tr><td>약물 상호작용</td><td>중등도 CYP2C8 억제제 (clopidogrel 등) 병용 시 용량 감소</td></tr>
+            <tr><td>치료 반응 예측</td><td>MRI-PDFF ≥30% 감소 + SHBG ≥120% 증가 → 조직학적 반응 예측</td></tr>
+            <tr><td>모니터링</td><td>갑상선 기능, SHBG, 위장관 부작용; 뼈·생식샘 이상 장기 주의</td></tr>
+          </table>
+          <div class="alert alert-warn" style="margin-top:6px">
+            <span>⚠️</span>
+            <div>52주 조직학적 결과 데이터만 현재 존재. 장기 안전성·지속 효과·중단 시점·비응답자(약 70–80%) 관리 근거 불충분.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLP-1 RA / Incretin -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>💉</span> 인크레틴 계열 (GLP-1 RA 및 이중·삼중 작용제)</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-5">LoE 5</span></div>
+          <div class="rec-text">GLP-1 RA — Phase III 조직학적 개선 미입증 → <strong>MASH 표적 치료로 현재 권고 불가</strong></div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">GLP-1 RA는 MASH (보상 간경변 포함)에서 안전 — T2D 또는 비만 적응증에 따라 사용; 심혈관대사 이점 있음</div>
+        </li>
+      </ul>
+      <div class="acc" style="margin-top:8px">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>📊 주요 약제별 간 관련 근거</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <table class="tbl">
+            <tr><th>약제</th><th>적응증</th><th>MASH 근거</th><th>현황</th></tr>
+            <tr><td><strong>Semaglutide</strong></td><td>T2D, 비만</td><td>지방간염 해소 O, 섬유화 개선 X (Phase II)</td><td>Phase III 진행 중</td></tr>
+            <tr><td><strong>Liraglutide</strong></td><td>T2D, 비만</td><td>Phase II 조직학적 이점 (소규모)</td><td>승인 적응증에 사용</td></tr>
+            <tr><td><strong>Tirzepatide</strong> (GIP-GLP1)</td><td>T2D, 비만</td><td>Phase II MASH 해소 유망 (발표 단계)</td><td>Phase III 진행 중</td></tr>
+            <tr><td><strong>Survodutide</strong> (GLP1-GCG)</td><td>연구 중</td><td>Phase IIb 조직학적 개선 (MASH)</td><td>등록 연구 진행 중</td></tr>
+          </table>
+          <div class="alert alert-info" style="margin-top:6px"><span>ℹ️</span><div>실질적 체중 감량이 수반될 때 간 조직학적 이점 예상 — 단, 약물 자체의 독립 효과는 아직 충분히 입증되지 않음.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SGLT2i / Pioglitazone / Metformin -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>💊</span> 혈당강하제의 MASLD 사용</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text"><strong>SGLT2 억제제</strong> — MASH 표적 치료 근거 불충분. 단, T2D·심부전·CKD 적응증에 안전하게 사용. (empagliflozin, dapagliflozin: 간 지방 중등도 감소)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text"><strong>Pioglitazone</strong> — 비간경변 MASH에서 안전. 지방간염 조직 개선 (RCT 근거 있음). 단 대규모 Phase III 없어 MASH 표적 치료로 불권고. (체중증가·부종·골손실·방광암 논란)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text"><strong>Metformin</strong> — 조직학적 개선 근거 없음. T2D 동반 간경변 환자에서 복용 중단 자제 (사망률 증가 우려). 비보상 간경변·신기능 저하 시 금기.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 기타 약제 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🧬</span> 기타 약제 — 비GLP계 체중감량제 및 스타틴</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-5">LoE 5</span></div>
+          <div class="rec-text">비인크레틴계 체중감량제 (orlistat, naltrexone-bupropion 등) — MASH 표적 치료 불권고</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">비타민 E — 대규모 Phase III 부재 및 장기 위험(전립선암 등) → MASH 표적 치료 불권고</div>
+        </li>
+      </ul>
+      <div class="acc" style="margin-top:8px">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>💊 스타틴의 역할</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <div class="stmt-item">MASLD는 죽상동맥경화성 이상지질혈증 유발 → 심혈관위험 관리 위한 스타틴 사용이 흔히 필요</div>
+          <div class="stmt-item">간기능 이상·MASLD 환자에서 스타틴 간독성 증가 없음 (관찰 연구)</div>
+          <div class="stmt-item">스타틴 사용: MASLD·섬유화·HCC 위험 감소 연관 (사례-대조 연구)</div>
+          <div class="alert alert-warn" style="margin-top:6px"><span>⚠️</span><div>비보상 간경변에서 고용량 스타틴: 간독성·횡문근융해 위험 (simvastatin 40 mg에서 19% 독성). 보상 간경변에서는 심혈관 위험 기반으로 사용 가능.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 약물 선택 요약 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🗺️</span> 약물 선택 요약 (Fig. 4 기반)</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <table class="tbl">
+        <tr><th>환자 그룹</th><th>MASH 표적</th><th>T2D 치료</th><th>이상지질혈증</th><th>비만</th></tr>
+        <tr><td><strong>비간경변 (F0–F3)</strong></td><td>F2/F3: Resmetirom (승인 시)</td><td>GLP-1 RA, SGLT2i, Metformin</td><td>스타틴</td><td>GLP-1 RA, 이중작용제 (tirzepatide), 비만수술</td></tr>
+        <tr><td><strong>보상 간경변 (F4)</strong></td><td>해당 없음 (현재)</td><td>GLP-1 RA (Child A), SGLT2i (Child A-B), Metformin (eGFR 양호)</td><td>스타틴</td><td>GLP-1 RA, 비만수술 (선택적)</td></tr>
+        <tr><td><strong>비보상 간경변</strong></td><td>해당 없음</td><td>인슐린 위주; SU 금기</td><td>주의 사용</td><td>이식 고려</td></tr>
       </table>
     </div>
   </div>
-  </div>
-</section>
 
-<!-- ══════════════════════════════════════════
-     SECTION 11: 핵심 권고 요약
-══════════════════════════════════════════ -->
-<section id="s11" class="section">
-  <div class="section-header" onclick="toggleSection(this)" role="button" aria-expanded="true">
-    <div class="section-num">11</div>
-    <div class="section-title">핵심 권고사항 종합 요약</div>
-    <button class="toggle-btn" title="접기/펼치기" aria-label="섹션 접기/펼치기">▾</button>
-  </div>
-  <div class="section-body">
+</div><!-- /pharma -->
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:44%">권고사항</th>
-          <th style="width:10%">근거수준</th>
-          <th style="width:16%">권고등급</th>
-          <th style="width:10%">합의율</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="sub-header"><td colspan="4">📋 정의·역학·자연경과</td></tr>
-        <tr><td>우연히 발견된 지방증 → SLD 원인 평가 + 진행 섬유화 검사 즉시 시행</td><td>LoE 3</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>일반인구 대상 SLD 선별검사는 권장하지 않는다</td><td>LoE 3</td><td><span class="badge b-no">강한 반대</span></td><td>95%</td></tr>
-        <tr><td>진행 섬유화 또는 간경변 환자에서 음주를 완전히 영구 중단해야 한다</td><td>LoE 3</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr class="sub-header"><td colspan="4">🔍 선별·진단·모니터링</td></tr>
-        <tr><td>T2DM 또는 복부비만+추가 위험인자 환자에서 MASLD 섬유화를 적극 탐색한다</td><td>LoE 3</td><td><span class="badge b-strong">강한 권고</span></td><td>89%</td></tr>
-        <tr><td>섬유화 진단에 ALT/AST보다 비침습 복합점수(FIB-4 등) 사용을 권장한다</td><td>LoE 2</td><td><span class="badge b-strong">강한 권고</span></td><td>97%</td></tr>
-        <tr><td>단계적 접근: FIB-4 우선 → VCTE(또는 ELF·MRE) 순서로 시행한다</td><td>LoE 2</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>임상 관리 목적으로는 대부분 간생검 불필요; MASH 확진·감별 시에만 시행한다</td><td>LoE 1</td><td><span class="badge b-stmt">진술</span></td><td>100%</td></tr>
-        <tr><td>동반질환(T2DM·이상지질혈증·고혈압·CKD·OSA·PCOS) 및 CVD 위험을 평가한다</td><td>LoE 2</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>비경변성 MASLD/MASH (F&lt;3): HCC 감시 현재 권장하지 않는다</td><td>LoE 3</td><td><span class="badge b-weak">약한 권고</span></td><td>86%</td></tr>
-        <tr><td>MASLD 관련 간경변: HCC 감시 프로그램을 반드시 적용한다</td><td>LoE 3</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>비만으로 초음파 시야 불량 시 AFP 병합 또는 MRI 전환을 고려한다</td><td>LoE 3</td><td><span class="badge b-open">열린 권고</span></td><td>93%</td></tr>
-        <tr class="sub-header"><td colspan="4">🥗 비약물 치료</td></tr>
-        <tr><td>식이·행동요법 기반 체중감량을 권장한다 (과체중 시 ≥5%, ≥7–10%, ≥10% 단계 목표)</td><td>LoE 1–2</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>지중해식 식단 유사 식이 질 개선, 가공식품·가당음료 제한을 권장한다</td><td>LoE 2</td><td><span class="badge b-strong">강한 권고</span></td><td>95%</td></tr>
-        <tr><td>운동: 중강도 ≥150분/주 또는 고강도 ≥75분/주 (개인 선호·능력에 맞게)</td><td>LoE 1</td><td><span class="badge b-strong">강한 권고</span></td><td>97%</td></tr>
-        <tr><td>건강식품 보충제: 근거 불충분 — 권장하지 않는다</td><td>LoE 2</td><td><span class="badge b-open">열린 권고</span></td><td>98%</td></tr>
-        <tr class="sub-header"><td colspan="4">💊 약물 치료</td></tr>
-        <tr><td>Resmetirom (현지 승인 시): 비경변성 MASH + F≥2에서 MASH 표적 치료로 고려</td><td>LoE 2</td><td><span class="badge b-strong">강한 권고</span></td><td>88%</td></tr>
-        <tr><td>간경변 단계에서의 MASH 표적 약물치료: 현재 권장 없다</td><td>LoE 5</td><td><span class="badge b-weak">약한 권고</span></td><td>95%</td></tr>
-        <tr><td>GLP1RA: MASH 표적치료 불가; T2DM·비만 적응증으로는 강하게 권장 (CVD·신장 이득)</td><td>LoE 2–5</td><td><span class="badge b-strong">강한 권고</span></td><td>98%</td></tr>
-        <tr><td>SGLT2i·Metformin: MASH 표적치료 불가; 각 적응증(T2DM·심부전·CKD)으로 사용 권장</td><td>LoE 3</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>스타틴: CVD 예방 지침에 따라 보상성 간경변 포함 사용 가능 (간 독성 위험 낮음)</td><td>LoE 1</td><td><span class="badge b-strong">강한 권고</span></td><td>98%</td></tr>
-        <tr><td>Vitamin E: 대규모 Phase III 미실시, 장기 위험 미확정 → MASH 표적치료 권장하지 않는다</td><td>LoE 2</td><td><span class="badge b-no">약한 반대</span></td><td>100%</td></tr>
-        <tr><td>Pioglitazone: 비경변성에서 안전, 대규모 Phase III 없음 → MASH 표적치료 권장 안 함</td><td>LoE 2</td><td><span class="badge b-weak">약한 권고</span></td><td>88%</td></tr>
-        <tr class="sub-header"><td colspan="4">🔪 수술·내시경</td></tr>
-        <tr><td>비만대사수술 (비경변성 적응증 해당): 간 장기 이득 + T2DM 관해 → 강하게 권장</td><td>LoE 3</td><td><span class="badge b-strong">강한 권고</span></td><td>98%</td></tr>
-        <tr><td>내시경적 비만대사 시술: 검증 부족 → 현재 MASH 표적치료로 권장하지 않는다</td><td>LoE 4</td><td><span class="badge b-weak">약한 권고</span></td><td>100%</td></tr>
-        <tr class="sub-header"><td colspan="4">🏥 간경변·이식</td></tr>
-        <tr><td>MASH 간경변: 영양·생활습관 권고를 간질환 중증도·영양 상태·근감소증에 맞게 조정</td><td>LoE 2</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>스타틴: 보상성 간경변 포함 CVD 가이드라인에 따라 사용 권장</td><td>LoE 1</td><td><span class="badge b-strong">강한 권고</span></td><td>98%</td></tr>
-        <tr><td>간이식 후: 표준 비약물·약물 치료를 일반 지침에 따라 시행한다</td><td>LoE 3</td><td><span class="badge b-strong">강한 권고</span></td><td>100%</td></tr>
-        <tr><td>간이식 후 GLP1RA: 체중·비만 관련 동반질환 조절에 고려 가능 (이식 특이 연구 필요)</td><td>LoE 5</td><td><span class="badge b-weak">약한 권고</span></td><td>100%</td></tr>
-      </tbody>
-    </table>
-  </div>
+<!-- ═══════════════ ADVANCED ═══════════════ -->
+<div id="tab-advanced" class="panel">
 
-  <!-- Key Messages -->
-  <div class="card" style="margin-top:24px">
-    <div class="card-title">임상 핵심 메시지 5가지</div>
-    <div class="grid2">
-      <div class="info-box info-navy">
-        <b>1. 명명법 전환</b><br>
-        NAFLD → MASLD, NASH → MASH. NAFLD 환자 99.8%는 MASLD 기준 충족 → 기존 근거 그대로 적용 가능. MetALD는 별개 범주.
-      </div>
-      <div class="info-box info-teal">
-        <b>2. 진단 전략</b><br>
-        ALT/AST 단독 → FIB-4 기반 단계적 접근(FIB-4 → VCTE). 간생검은 임상 목적으로 대부분 불필요.
-      </div>
-      <div class="info-box info-green">
-        <b>3. 치료 1순위</b><br>
-        체중감량(≥5%), 지중해식 식단, 규칙적 운동은 모든 MASLD 환자의 필수 치료이다.
-      </div>
-      <div class="info-box info-amber">
-        <b>4. 약물치료 현황</b><br>
-        Resmetirom만이 F2–F3 비경변 MASH에서 조직학적 효과를 입증한 유일한 MASH 표적제. GLP1RA·SGLT2i는 대사 적응증으로 사용.
+  <!-- 간경변 영양 -->
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🍽️</span> MASH 간경변 — 영양 및 생활습관</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">간경변 영양 권고는 간질환 중증도·영양 상태·근감소증 유무에 맞게 조정</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text">근감소증·근감소 비만·비보상 간경변 → <strong>고단백 식이 (1.2–1.5 g/kg/일) + 심야 간식</strong></div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">보상 간경변 + 비만 → 적정 체중 감량 + 고단백·운동 병행 (근감소증 예방)</div>
+        </li>
+      </ul>
+      <div class="acc" style="margin-top:8px">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>📋 간경변 영양 권장량 (EASL/ESPEN 기준)</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <table class="tbl">
+            <tr><th>항목</th><th>권장량</th></tr>
+            <tr><td>에너지</td><td>35 kcal/kg 실제체중/일 (비보상: 이보다 낮게 시작 가능)</td></tr>
+            <tr><td>단백질</td><td>1.2–1.5 g/kg/일 (근감소·비보상: 1.5 g; 비만+보상 감량 프로그램: 1.2–1.5 g)</td></tr>
+            <tr><td>식사 횟수</td><td>3식 + 3간식; 4–6시간 공복 초과 금지</td></tr>
+            <tr><td>심야 간식</td><td>복합 탄수화물 + 단백질 — 지질 산화↓, 질소 균형↑, HE↓</td></tr>
+          </table>
+        </div>
       </div>
     </div>
-    <div class="info-box info-red" style="margin-top:12px">
-      <b>5. 다학제 접근 필수</b><br>
-      MASLD는 간질환인 동시에 CVD·T2DM·CKD와 밀접히 연계된 전신 대사질환이다. 내분비내과·간과·심장과·영양팀을 포함한 다학제 팀 관리가 필수적이다. (LoE 3, strong, 100%)
+  </div>
+
+  <!-- 간경변 약물 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>💊</span> 간경변 동반 시 약물 사용 지침</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text"><strong>Metformin</strong>: 보상 간경변 + 정상 신기능 → 사용 가능. 비보상 간경변 + 신기능 저하 → <span class="pill pill-warn">금기</span> (젖산증)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text"><strong>설포닐우레아</strong>: 비보상 간경변 → 저혈당 위험 <span class="pill pill-warn">금기</span></div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-2">LoE 2</span></div>
+          <div class="rec-text"><strong>GLP-1 RA</strong>: Child-Pugh A → 적응증에 따라 사용 가능</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text"><strong>SGLT2 억제제</strong>: Child-Pugh A·B → 사용 가능 (C에서 약물 노출 67–111% 증가)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-1">LoE 1</span></div>
+          <div class="rec-text"><strong>스타틴</strong>: 만성 간질환·보상 간경변 → 심혈관 가이드라인에 따라 사용. 비보상 간경변에서 고용량 주의</div>
+        </li>
+      </ul>
     </div>
   </div>
-  </div>
-</section>
 
-</div><!-- /part2 container -->
-
-<!-- FOOTER -->
-<footer style="background:var(--navy);color:rgba(255,255,255,.7);padding:28px 40px;text-align:center;font-size:12px;line-height:1.8">
-  <div style="max-width:900px;margin:0 auto">
-    <div style="color:rgba(255,255,255,.9);font-size:13px;font-weight:600;margin-bottom:8px">
-      EASL–EASD–EASO Clinical Practice Guidelines on MASLD (2024) — 한글 상세 요약
+  <!-- 문맥고혈압 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🔬</span> 문맥고혈압 (Portal Hypertension) 평가</div>
+      <span class="toggle">▾</span>
     </div>
-    <div>원문: <em>Journal of Hepatology</em> 2024;81:492–542 · DOI: 10.1016/j.jhep.2024.04.031</div>
-    <div>Chair: Frank Tacke · EASL·EASD·EASO 공동 발표 · Open Access (CC BY-NC 4.0)</div>
-    <div style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.45)">본 요약은 교육 목적의 번역·정리본입니다. 임상 적용 시 원문 및 최신 국내외 가이드라인을 반드시 참조하십시오.</div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">VCTE LSM &lt;15 kPa + 혈소판 &gt;150×10⁹/L → 임상적 유의 문맥고혈압(CSPH) 배제 가능</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">보상 진행성 간질환 + LSM ≥20 kPa 또는 혈소판 &lt;150×10⁹/L → 상부위장관 내시경 (정맥류 확인; NSBB 시작 기준 미충족 시)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">CSPH 확인 시 → NSBB 투여 (금기 없는 경우); 예방적 NSBB는 비보상화 사건도 감소 (PREDESCI trial)</div>
+        </li>
+      </ul>
+      <div class="alert alert-warn" style="margin-top:8px">
+        <span>⚠️</span>
+        <div>LSM ≥25 kPa로 CSPH 진단(rule-in)은 <strong>BMI &lt;30 kg/m² 비비만 환자에만 적용</strong>. 비만은 LSM을 과대 추정시킴. ANTICIPATE-NASH 모델(LSM + 혈소판 + BMI) 활용 가능.</div>
+      </div>
+    </div>
   </div>
-</footer>
 
-<button id="scrolltop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
+  <!-- 간이식 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🏥</span> 간이식 전후 관리</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">MASLD 이식 후보 → 다학제팀에서 심혈관·대사 동반질환 평가 (단계적·위험 맞춤 심장 검사 알고리즘)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">비만 + 말기 MASLD + 이식 대기 → 수술 후 결과 개선을 위해 체중 감량 개입 (BMI &lt;40 kg/m², 이상적으로 &lt;35 kg/m² 목표)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">보상 간경변 + 임상적 유의 문맥고혈압 없음 → 이식 전 소매위절제술 고려 가능</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">이식 후 → 표준 식이·생활습관 중재 + 고혈압·T2D·이상지질혈증 약물 치료 (일반 가이드라인 준수)</div>
+        </li>
+      </ul>
+      <div class="stmt-item">이식 후 MASLD 재발 위험 높음 (5년 지방증 80%, 지방간염 60%, 고도 섬유화 20%) — 특히 다수 대사 위험인자 보유자 (LoE 3)</div>
+      <div class="stmt-item">MASLD 이식 수혜자: 심혈관사건·신장질환 위험 높음 → 장기 생존에 악영향 (LoE 2)</div>
+    </div>
+  </div>
+
+  <!-- HCC 위험 층화 점수 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>🎗️</span> MASLD 관련 간경변에서 HCC 위험 층화 도구 (Table 9)</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <div class="alert alert-warn" style="margin-bottom:8px">
+        <span>⚠️</span>
+        <div>이하 점수 체계들은 모두 Phase III/IV 검증 전 단계. 임상적 보조 도구로만 활용하며, 단독으로 감시 결정 내리지 말 것.</div>
+      </div>
+      <table class="tbl">
+        <tr><th>점수</th><th>변수</th><th>성능 (C-index)</th></tr>
+        <tr><td><strong>HCC Risk Score</strong><br><small>www.hccrisk.com</small></td><td>나이, 성별, 혈소판, 알부민, AST/√ALT</td><td>검증 코호트 0.718 (MASLD 간경변 7,068명)</td></tr>
+        <tr><td><strong>aMAP</strong></td><td>나이, 성별, 빌리루빈, 알부민, 혈소판</td><td>전체 0.85; MASLD F3-F4 0.754</td></tr>
+        <tr><td><strong>GALAD</strong></td><td>나이, 성별, AFP, AFP-L3, DCP</td><td>HCC 진단 1.5년 전부터 유의 상승</td></tr>
+        <tr><td><strong>THRI</strong></td><td>나이, 원인, 성별, 혈소판 (0–366점)</td><td>10년 HCC: 저위험(&lt;120) 3%, 중위험 10%, 고위험(&gt;240) 32%</td></tr>
+        <tr><td><strong>LiverRisk</strong><br><small>www.liverriskscore.com</small></td><td>나이, 혈당, 콜레스테롤, AST, ALT, GGT, 혈소판</td><td>고위험군 8년 HCC 4.4%; 저위험군 &lt;0.1%</td></tr>
+      </table>
+      <div class="acc" style="margin-top:8px">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>📊 FIB-4를 이용한 간경변 HCC 위험 예측</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <table class="tbl">
+            <tr><th>FIB-4 패턴 (간경변 기준)</th><th>연간 HCC 위험</th></tr>
+            <tr><td class="fib-low">지속 저위험 (&lt;1.45)</td><td>&lt;0.3%</td></tr>
+            <tr><td class="fib-mod">고위험 단독 시점</td><td>중간</td></tr>
+            <tr><td class="fib-vhigh">기저 + 3년 후 모두 고위험 (&gt;2.67)</td><td>&gt;2.5% (저위험 대비 50배↑)</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 간이식 전 심혈관 평가 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>❤️</span> 간이식 전 심혈관 단계적 평가 알고리즘 (Fig. 5)</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <div class="alert alert-danger" style="margin-bottom:8px">
+        <span>⚠️</span>
+        <div>MASLD 이식 수혜자는 이식 후 첫 1년 내 (특히 수술 전후) 주요 심혈관사건 위험이 가장 높음. 체계적 심혈관 평가 필수.</div>
+      </div>
+      <div class="acc">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>단계 1 — 기본 검사 (모든 이식 후보자)</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <ul style="font-size:12px;line-height:2;list-style:none">
+            <li>• 과거력 (심혈관 증상·병력)</li>
+            <li>• 안정 시 12유도 심전도</li>
+            <li>• 경흉부 심초음파 (좌심실 기능, 폐동맥압)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="acc">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>단계 2 — 부하 검사 (기본 검사 이상 소견 또는 연령 &gt;50세 또는 CVD 위험인자 ≥2개)</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <ul style="font-size:12px;line-height:2;list-style:none">
+            <li>• <strong>도부타민 부하 심초음파</strong> (또는 동등 검사) — 1차 선택</li>
+            <li>• 심장 자기공명 부하 영상 — 대안</li>
+            <li>• 관상동맥 CT 혈관조영(CCTA) — 대안</li>
+            <li>⚠️ 간경변 환자: 대부분 목표 심박수 도달 어려워 약물 부하 검사 선호</li>
+            <li>⚠️ 심근관류 신티그래피 가능하나 관상동맥질환 민감도 61%로 제한적</li>
+          </ul>
+        </div>
+      </div>
+      <div class="acc">
+        <div class="acc-hdr" onclick="toggleAcc(this)">
+          <span>단계 3 — 관상동맥 평가 (부하 검사 양성 또는 임상적 의심)</span>
+          <div class="acc-right"><span>▸</span></div>
+        </div>
+        <div class="acc-body">
+          <ul style="font-size:12px;line-height:2;list-style:none">
+            <li>• 심장내과 의뢰</li>
+            <li>• CCTA 또는 관상동맥 조영술</li>
+            <li>• 필요 시 혈관재건술 (경피적 관상동맥중재술 또는 관상동맥우회술)</li>
+            <li>• 이식팀·심장내과·마취과 다학제 협진으로 수술 전 최적화</li>
+          </ul>
+          <div class="alert alert-info" style="margin-top:6px"><span>ℹ️</span><div>CAR-OLT 점수 (간이식 심혈관위험 예측) 활용 가능. 이식 전후 심혈관 최적화가 장기 생존에 결정적.</div></div>
+        </div>
+      </div>
+
+      <div class="sec-sep"></div>
+      <div style="font-weight:600;font-size:12px;color:var(--accent2);margin-bottom:6px">이식 전 스크리닝 체크리스트 (Table 11)</div>
+      <table class="tbl">
+        <tr><th>항목</th><th>권고 내용</th></tr>
+        <tr><td><strong>T2D</strong></td><td>IFG/IGT·T2D 선별 (OGTT, HbA1c); 이식 전 혈당 최적화; 체중 감량 효과 있는 약제 우선 (SGLT2i, GLP-1 RA)</td></tr>
+        <tr><td><strong>영양</strong></td><td>이식 전 영양 상태 평가; 음주력 확인; 건강 식이·운동·생활습관 개선이 이식 전 관리의 핵심</td></tr>
+        <tr><td><strong>심혈관</strong></td><td>이식 전 심혈관 위험 층화 필수; 단계적 심장 검사 알고리즘 적용; 스타틴·항혈소판제·RAAS 차단제 등 목표 지향적 관리</td></tr>
+        <tr><td><strong>신장</strong></td><td>이식 전 신기능 적절히 모니터링; 병용 약제 신기능에 따라 조정</td></tr>
+        <tr><td><strong>악성종양</strong></td><td>비MASLD 간경변과 동일 프로토콜로 이식 전 악성종양 선별 (소화기암·생식기암 포함)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 비만 환자 이식 전 체중 감량 -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="ch-title"><span>⚖️</span> 말기 MASLD 이식 대기자의 비만 관리</div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="card-body collapsed">
+      <ul class="rec-list">
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-strong" data-tip="강력 권고">강력</span><span class="loe-1">LoE 1</span></div>
+          <div class="rec-text">식이 조절 + 감독 하 운동이 1차 접근; 목표 BMI &lt;40 kg/m² (이상적으로 &lt;35 kg/m²)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-weak" data-tip="제한적 권고">제한적</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text">약물적 체중 감량 → 근감소증·간기능 저하 위험-이익 평가 후 신중 고려</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-3">LoE 3</span></div>
+          <div class="rec-text">보상 간경변 + 임상적 유의 문맥고혈압 없음 → 이식 전 <strong>소매위절제술</strong> 대안으로 고려 가능 (1년 중앙 체중 감소 31 kg, 88%가 이식 진행)</div>
+        </li>
+        <li class="rec-item">
+          <div class="rec-badges"><span class="grade grade-open" data-tip="열린 권고">열린</span><span class="loe-4">LoE 4</span></div>
+          <div class="rec-text">비보상 간경변 → 비만수술 <span class="pill pill-warn">금기</span>. 이식과 병합 소매위절제술 동시 시행 방식만 가능 (고도 선택적, 전문 센터)</div>
+        </li>
+      </ul>
+      <div class="stmt-item">이식 전 체중 감량과 동반질환 조절 → 심혈관 이환율 감소 및 장기 생존·MASLD 재발 감소 예상 (단, 전향적 입증 데이터 부족) (LoE 3)</div>
+    </div>
+  </div>
+
+</div><!-- /advanced -->
+
+
+<!-- ═══════════════ UPDATES ═══════════════ -->
+<div id="tab-updates" class="panel">
+
+  <div class="alert alert-success" style="margin-bottom:10px">
+    <span>🆕</span>
+    <div>EASL-EASD-EASO NAFLD CPG 2016을 대체하는 2024 완전 개정판. 명칭 변경(NAFLD→MASLD/MASH)을 포함한 주요 개념·치료 업데이트.</div>
+  </div>
+
+  <!-- 명칭 변경 -->
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="pill pill-new">명칭 변경</span>
+        <strong>NAFLD → MASLD / NASH → MASH (2023년 국제 합의)</strong>
+      </span><div class="acc-right"><span>▸</span></div>
+    </div>
+    <div class="acc-body">
+      <table class="tbl">
+        <tr><th>구 명칭</th><th>신 명칭</th><th>변경 이유</th></tr>
+        <tr><td>NAFLD</td><td><strong>MASLD</strong></td><td>"비알코올성(non-alcoholic)" 낙인 문제 해결; 대사 원인 강조; NAFLD와 99.8% 중복</td></tr>
+        <tr><td>NASH</td><td><strong>MASH</strong></td><td>동일 원리; 기존 NASH 연구 결과 MASH에 직접 적용 가능</td></tr>
+        <tr><td>—</td><td><strong>MetALD</strong></td><td>신규 범주: MASLD + 중등도 음주 (여성 20–50 g/일, 남성 30–60 g/일); MASLD보다 불량한 예후</td></tr>
+      </table>
+      <div class="alert alert-info" style="margin-top:6px"><span>ℹ️</span><div>NHANESIII 데이터: NAFLD 환자의 5.3%만 MASLD 기준 불충족. 기존 NAFLD 근거 전체를 MASLD에 적용 가능.</div></div>
+    </div>
+  </div>
+
+  <!-- Resmetirom 승인 -->
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="pill pill-new">신규 승인</span>
+        <strong>Resmetirom — 최초 MASH 표적 치료제 (미국 2024년 3월 가속 승인)</strong>
+      </span><div class="acc-right"><span>▸</span></div>
+    </div>
+    <div class="acc-body">
+      <div class="grid2" style="gap:10px">
+        <div>
+          <div style="font-weight:600;color:var(--accent2);margin-bottom:6px;font-size:12px">MAESTRO-NASH Phase III 주요 결과</div>
+          <table class="tbl">
+            <tr><th>엔드포인트</th><th>80mg</th><th>100mg</th><th>위약</th></tr>
+            <tr><td>MASH 해소 (섬유화 비악화)</td><td>~26%</td><td>~30%</td><td>~10%</td></tr>
+            <tr><td>섬유화 ≥1단계 개선</td><td>~24%</td><td>~26%</td><td>~14%</td></tr>
+            <tr><td>LDL-C</td><td colspan="2" style="text-align:center">유의 감소</td><td>변화 없음</td></tr>
+          </table>
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--accent2);margin-bottom:6px;font-size:12px">임상 적용 핵심</div>
+          <ul style="font-size:12px;line-height:1.9;list-style:none">
+            <li>✅ 비간경변 MASH + F2-F3 섬유화</li>
+            <li>✅ 미국 가속 승인; 유럽 미승인(2024 기준)</li>
+            <li>⚠️ 비응답자(~70–80%) 중단 기준 미확립</li>
+            <li>⚠️ 갑상선·골·생식샘 장기 모니터링 필수</li>
+            <li>💡 GLP-1 RA 병용 시 동일 기준 적용 가능</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 단계적 진단 알고리즘 -->
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="pill pill-key">개정</span>
+        <strong>FIB-4 기반 단계적 알고리즘 — 임계값 명확화 및 2단계 접근 공식화</strong>
+      </span><div class="acc-right"><span>▸</span></div>
+    </div>
+    <div class="acc-body">
+      <ul style="font-size:12px;line-height:1.9;list-style:none">
+        <li>• FIB-4 1차 → VCTE/ELF 2차 단계 접근이 공식 권고 경로로 확정</li>
+        <li>• ≥65세: FIB-4 하한 임계값 1.3 → <strong>2.0</strong>으로 조정 (위양성 감소)</li>
+        <li>• FIB-4 중간값(1.3–2.67): 즉시 VCTE <strong>또는</strong> 1년 중재 후 재평가 — 두 옵션 모두 허용</li>
+        <li>• At-risk MASH 선별: NIS2+, FAST, MAST, MRE 복합 지표 권고</li>
+        <li>• ELF &gt;9.8 또는 VCTE LSM ≥10 kPa → Resmetirom 치료 대상 선정 기준 활용 가능</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GLP-1 RA 위치 정립 -->
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="pill pill-key">개정</span>
+        <strong>GLP-1 RA / 인크레틴 — MASH 표적 불가, 적응증 치료는 적극 권장</strong>
+      </span><div class="acc-right"><span>▸</span></div>
+    </div>
+    <div class="acc-body">
+      <div class="stmt-item">Semaglutide Phase II: MASH 해소 O, 섬유화 개선 X (대규모 Phase III 진행 중)</div>
+      <div class="stmt-item">Tirzepatide (GIP-GLP1): Phase II MASH 긍정 데이터; 비알코올성 지방증·내장지방 탁월한 감소 (SURPASS-3 MRI)</div>
+      <div class="stmt-item">Survodutide (GLP1-GCG): Phase IIb 조직학적 개선 (MASH); Phase III 진행 중</div>
+      <div class="alert alert-success" style="margin-top:6px">
+        <span>✅</span>
+        <div>T2D·비만 적응증에 <strong>적극 사용</strong>. MASH 단독 목적 처방은 현재 권고 불가. Phase III 결과 후 지침 업데이트 예정.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 문맥고혈압 Baveno VII -->
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="pill pill-key">개정</span>
+        <strong>Baveno VII 기준 MASLD 적용 — 비만에서 LSM 과대 추정 주의</strong>
+      </span><div class="acc-right"><span>▸</span></div>
+    </div>
+    <div class="acc-body">
+      <table class="tbl">
+        <tr><th>기준</th><th>해석</th><th>MASLD 특이사항</th></tr>
+        <tr><td class="fib-low">LSM &lt;15 kPa + 혈소판 &gt;150×10⁹/L</td><td>CSPH 배제</td><td>일반 적용 가능</td></tr>
+        <tr><td class="fib-vhigh">LSM &gt;25 kPa</td><td>CSPH 진단</td><td><strong>BMI &lt;30 kg/m²에서만 적용</strong>; 비만 시 위양성↑</td></tr>
+        <tr><td class="fib-mod">LSM 15–25 kPa</td><td>불확정</td><td>ANTICIPATE-NASH 모델 (LSM+혈소판+BMI) 보완 활용</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 다학제 접근 -->
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="pill pill-key">강조</span>
+        <strong>다학제 접근 — 간전문의·당뇨·비만·심장·영양팀 협진 필수화</strong>
+      </span><div class="acc-right"><span>▸</span></div>
+    </div>
+    <div class="acc-body">
+      <div class="stmt-item">자동화 FIB-4 계산 + 전자 의무기록 알림 → 간전문의 의뢰율 3% → 33%↑ (당뇨/일반내과 클리닉 RCT)</div>
+      <ul style="font-size:12px;line-height:1.9;list-style:none;margin-top:8px">
+        <li>🏥 <strong>1차 진료·당뇨병과</strong>: FIB-4 산출, 1단계 평가, 생활습관 교육</li>
+        <li>💉 <strong>비만내과·내분비과</strong>: 체중 관리, GLP-1 RA·인크레틴 치료</li>
+        <li>🔬 <strong>간전문의</strong>: FIB-4 ≥2.67, VCTE ≥8 kPa, 간경변, HCC 감시</li>
+        <li>❤️ <strong>심장내과</strong>: CVD 위험 평가, 이식 전 심혈관 검사</li>
+        <li>🥗 <strong>영양사·행동치료사</strong>: 장기 생활습관 중재 지원</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 연구 우선순위 -->
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="pill pill-key">미래 방향</span>
+        <strong>향후 연구 우선 과제 (Box 1)</strong>
+      </span><div class="acc-right"><span>▸</span></div>
+    </div>
+    <div class="acc-body">
+      <div class="grid2" style="gap:10px">
+        <div>
+          <div style="font-weight:600;color:var(--accent2);font-size:12px;margin-bottom:4px">진단·자연경과</div>
+          <ul style="font-size:11px;line-height:1.8;list-style:none;color:var(--text2)">
+            <li>• 일차의료 적용 가능한 비용효율적 case-finding 도구</li>
+            <li>• MetALD 자연경과 기술 및 신뢰할 수 있는 음주량 바이오마커</li>
+            <li>• 비간경변 MASLD에서 HCC 감시 대상·도구 최적화</li>
+            <li>• AI 기반 디지털 조직병리 활용 위험 층화</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--accent2);font-size:12px;margin-bottom:4px">치료</div>
+          <ul style="font-size:11px;line-height:1.8;list-style:none;color:var(--text2)">
+            <li>• MASH 표적 약물 조기 비응답자 예측 및 중단 기준</li>
+            <li>• 인크레틴 계열 + Resmetirom 병합 효과 전향적 평가</li>
+            <li>• MASH 관련 간경변 단계에서의 유효 약물 개발</li>
+            <li>• 체중 감량 독립적 MASLD 개선 기전 규명</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /updates -->
+
+</div><!-- /main -->
 
 <script>
-const st = document.getElementById('scrolltop');
-window.addEventListener('scroll', () => {
-  st.style.opacity = window.scrollY > 400 ? '1' : '0';
-  st.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
-});
-st.style.opacity = '0'; st.style.transition = 'opacity .2s';
+/* ── TAB ── */
+function showTab(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('tab-' + id);
+  if (panel) panel.classList.add('active');
+  event.currentTarget.classList.add('active');
+}
 
-// 섹션 스크롤
-function navScrollTo(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const header = el.querySelector('.section-header');
-  const body = el.querySelector('.section-body');
-  const navbarH = document.querySelector('.navbar')?.offsetHeight || 52;
+/* ── CARD TOGGLE ── */
+function toggleCard(hdr) {
+  hdr.classList.toggle('open');
+  const body = hdr.nextElementSibling;
+  body.classList.toggle('collapsed');
+}
 
-  function doScroll() {
-    const top = el.getBoundingClientRect().top + window.scrollY - navbarH - 8;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
-
-  if (body && body.classList.contains('collapsed')) {
-    toggleSection(header);
-    setTimeout(doScroll, 380);
+/* ── ACCORDION ── */
+function toggleAcc(hdr) {
+  const body = hdr.nextElementSibling;
+  const arrow = hdr.querySelector('.acc-right span') || hdr.lastElementChild;
+  if (body.style.display === 'block') {
+    body.style.display = 'none';
+    if (arrow) arrow.textContent = '▸';
   } else {
-    doScroll();
+    body.style.display = 'block';
+    if (arrow) arrow.textContent = '▾';
   }
 }
 
-// Active nav highlighting
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
-  navLinks.forEach(l => {
-    const target = l.getAttribute('onclick')?.match(/'(\w+)'/)?.[1];
-    l.style.background = target === cur ? 'rgba(27,156,133,.35)' : '';
-    l.style.color = target === cur ? '#fff' : '';
+/* ── ABBREVIATION DATA ── */
+const abbrs = [
+  // 질환명
+  ['MASLD','Metabolic Dysfunction-Associated Steatotic Liver Disease — 대사이상 관련 지방간질환 (NAFLD 대체 명칭, 2023)'],
+  ['MASH','Metabolic Dysfunction-Associated Steatohepatitis — 대사이상 관련 지방간염 (NASH 대체 명칭)'],
+  ['NAFLD','Non-Alcoholic Fatty Liver Disease — 비알코올성 지방간질환 (구 명칭)'],
+  ['NASH','Non-Alcoholic Steatohepatitis — 비알코올성 지방간염 (구 명칭)'],
+  ['SLD','Steatotic Liver Disease — 지방간질환 (상위 포괄 개념)'],
+  ['MetALD','MASLD with Moderate Alcohol Intake — 중등도 음주 동반 MASLD; 예후가 MASLD보다 불량'],
+  ['ALD','Alcohol-Related Liver Disease — 알코올 관련 간질환'],
+  ['HCC','Hepatocellular Carcinoma — 간세포암종; MASLD에서 간경변 없이도 발생 가능'],
+  ['MASL','Metabolic Dysfunction-Associated Steatotic Liver — 단순 지방간 (염증 없음)'],
+  ['CAKUT','Congenital Anomalies of the Kidney and Urinary Tract'],
+
+  // 진단·평가
+  ['FIB-4','Fibrosis-4 Index — 나이×AST/(혈소판×√ALT); 비침습 섬유화 스코어; 배제 &lt;1.3 (65세↑: 2.0), 진단 &gt;2.67'],
+  ['NFS','NAFLD Fibrosis Score — 비침습 섬유화 스코어; 배제 &lt;−1.455, 진단 &gt;0.676'],
+  ['APRI','AST to Platelet Ratio Index — AST/혈소판 기반 섬유화 지수'],
+  ['ELF','Enhanced Liver Fibrosis — 혈청 콜라겐 대사 마커 조합 스코어 (HA, PIIINP, TIMP-1)'],
+  ['VCTE','Vibration-Controlled Transient Elastography — 진동 조절 순간 탄성검사 (FibroScan); LSM + CAP 동시 측정'],
+  ['LSM','Liver Stiffness Measurement — 간 경직도 측정 (kPa); 섬유화 및 CSPH 평가'],
+  ['CAP','Controlled Attenuation Parameter — 초음파 감쇠 파라미터; 지방증 정도 추정'],
+  ['MRE','Magnetic Resonance Elastography — 자기공명 탄성검사; 고도 섬유화 정확도 우수'],
+  ['MRI-PDFF','MRI Proton Density Fat Fraction — 간 지방 정량 비침습 금표준'],
+  ['SWE','Shear Wave Elastography — 전단파 탄성검사; VCTE 대안'],
+  ['FAST','FibroScan-AST Score — 지방증·섬유화·염증 복합 NIT; 배제 &lt;0.35, 진단 &gt;0.67'],
+  ['MAST','MRI-AST Score — MRE + MRI-PDFF + AST 복합 스코어'],
+  ['MEFIB','MRE + FIB-4 복합 스코어 — F2 이상 섬유화 감별'],
+  ['NAS','NAFLD Activity Score — 조직학적 활성도 점수 (지방증+염증+풍선변성); 임상시험 기본 지표'],
+  ['NIT','Non-Invasive Test — 비침습 검사 (혈액 스코어, 영상 탄성검사 등)'],
+  ['NIS2+','혈액 기반 at-risk MASH 진단 패널 (최적화된 NIS4 파생)'],
+  ['HOMA-IR','Homeostatic Model Assessment of Insulin Resistance — 공복인슐린×공복혈당/405; 인슐린 저항성 지표'],
+  ['OGTT','Oral Glucose Tolerance Test — 경구당부하검사'],
+  ['AFP','Alpha-Fetoprotein — 간암 종양 표지자; 초음파와 병합 시 민감도 63%↑'],
+  ['GALAD','간암 위험 스코어 (나이, 성별, AFP, AFP-L3, DCP 기반)'],
+  ['CSPH','Clinically Significant Portal Hypertension — 임상적 유의 문맥고혈압; HVPG ≥10 mmHg'],
+  ['HVPG','Hepatic Venous Pressure Gradient — 간정맥 압력차; 문맥고혈압 기준 검사'],
+
+  // 치료
+  ['GLP-1 RA','Glucagon-Like Peptide-1 Receptor Agonist — 글루카곤 유사 펩타이드-1 수용체 작용제 (semaglutide, liraglutide, dulaglutide 등)'],
+  ['SGLT2i','Sodium-Glucose Co-Transporter-2 Inhibitor — SGLT2 억제제 (empagliflozin, dapagliflozin 등)'],
+  ['THRβ','Thyroid Hormone Receptor Beta — 갑상선호르몬 수용체 베타; 간 지향성 THRβ 작용제 = resmetirom의 표적'],
+  ['Resmetirom','MGL-3196 — 간 지향성 THRβ 선택적 작용제; 2024년 미국 가속 승인 MASH 표적 치료제'],
+  ['SHBG','Sex Hormone-Binding Globulin — 성호르몬 결합 글로불린; resmetirom 치료 반응 대리 지표'],
+  ['OCA','Obeticholic Acid — 옥시스테롤 FXR 작용제; MASH 가속 승인 거부로 개발 중단'],
+  ['PPAR','Peroxisome Proliferator-Activated Receptor — 과산화소체 증식 활성화 수용체 (α, γ, δ); 지질·포도당 대사 조절'],
+  ['FXR','Farnesoid X Receptor — 담즙산 핵 수용체; MASH 치료 표적 중 하나'],
+  ['NSBB','Non-Selective Beta-Blocker — 비선택적 베타차단제 (propranolol, carvedilol); 정맥류 출혈 예방'],
+  ['GIP','Glucose-Dependent Insulinotropic Polypeptide — 포도당 의존성 인슐린 분비 촉진 펩타이드; tirzepatide의 이중 표적'],
+  ['Tirzepatide','GIP-GLP1 이중 수용체 작용제; T2D·비만 승인; MASH 연구 중'],
+  ['Survodutide','GLP1-GCG 이중 작용제; MASH Phase IIb 긍정적 결과'],
+
+  // 병태생리·유전
+  ['PNPLA3','Patatin-Like Phospholipase Domain Containing 3 — p.I148M 변이가 MASLD·MASH·HCC 위험 증가; 폐경 후 여성에서 특히 강한 영향'],
+  ['TM6SF2','Transmembrane 6 Superfamily Member 2 — p.E167K 변이; MASLD 진행 위험 증가'],
+  ['HSD17B13','17β-Hydroxysteroid Dehydrogenase 13 — 보호 변이; MASLD 진행 위험 감소'],
+  ['MBOAT7','Membrane Bound O-Acyltransferase Domain Containing 7 — rs641738 변이; MASLD 위험 증가'],
+  ['Adipo-IR','Adipose Tissue Insulin Resistance Index — 지방조직 인슐린 저항성 지수; 간 섬유화 중증도와 연관'],
+
+  // 합병증·영양
+  ['HE','Hepatic Encephalopathy — 간성 뇌병증; 비보상 간경변의 주요 합병증'],
+  ['Sarcopenia','근감소증 — 골격근 질량·기능 감소; 간경변 환자 50–60% 동반; 이식 후 사망률 증가'],
+  ['ESPEN','European Society for Clinical Nutrition and Metabolism — 유럽 임상 영양 대사 학회'],
+  ['BCAA','Branched-Chain Amino Acid — 분지사슬 아미노산 (루신, 이소루신, 발린); 간경변 단백 보충에 유용'],
+
+  // 임상시험
+  ['MAESTRO-NASH','Resmetirom Phase III 등록 임상시험 — 비간경변 MASH F2-F3, 52주 조직학적 개선 입증'],
+  ['CREDENCE','Canagliflozin + CKD + T2D — 신부전·CVD 복합 34%↓'],
+  ['DAPA-CKD','Dapagliflozin + CKD (T2D 유무 무관) — 신질환 진행·사망 39%↓'],
+  ['EMPA-KIDNEY','Empagliflozin + CKD — 신질환 진행·CVD 사망 28%↓'],
+  ['PREDESCI','보상 간경변 + CSPH에서 NSBB → 비보상화 사건·사망 감소 (RCT)'],
+  ['BRAVES','비만대사 수술 vs 생활습관 — MASH 해소율 55% vs 15% (Roux-en-Y/소매위절제술)'],
+  ['FIDELIO-DKD','Finerenone + T2D + CKD — 신부전·CVD 복합 18%↓'],
+  ['FIGARO-DKD','Finerenone + T2D + CKD — CVD 사건 13%↓'],
+
+  // 기타
+  ['T2D','Type 2 Diabetes — 제2형 당뇨병; MASLD에서 가장 강력한 섬유화 진행·HCC 위험인자'],
+  ['CVD','Cardiovascular Disease — 심혈관질환'],
+  ['OSA','Obstructive Sleep Apnea — 폐쇄성 수면무호흡증; MASLD와 연관 (HR 2.22)'],
+  ['PCOS','Polycystic Ovary Syndrome — 다낭성 난소 증후군; MASLD 위험 증가'],
+  ['BMI','Body Mass Index — 체질량지수; 아시아 과체중 기준 23 kg/m²'],
+  ['ACE-I','Angiotensin-Converting Enzyme Inhibitor — 안지오텐신 전환효소 억제제; 간 보호 효과 일부 데이터 있음'],
+  ['CPG','Clinical Practice Guideline — 임상 진료 지침'],
+  ['RCT','Randomised Controlled Trial — 무작위 대조시험'],
+  ['NNT','Number Needed to Treat — 치료 필요 수'],
+  ['HR','Hazard Ratio — 위험비'],
+  ['OR','Odds Ratio — 교차비'],
+  ['AUROC','Area Under the Receiver Operating Characteristic Curve — ROC 곡선 아래 면적; 진단 정확도 지표'],
+  ['LoE','Level of Evidence — 근거 수준 (1: SR/RCT → 5: 전문가 의견)'],
+  ['EASL','European Association for the Study of the Liver — 유럽 간학회'],
+  ['EASD','European Association for the Study of Diabetes — 유럽 당뇨병학회'],
+  ['EASO','European Association for the Study of Obesity — 유럽 비만학회'],
+  ['LT','Liver Transplantation — 간이식'],
+  ['MELD','Model for End-Stage Liver Disease — 말기 간질환 예측 모델'],
+  ['NT-proBNP','N-Terminal Pro-Brain Natriuretic Peptide — 심부전 마커; FIB-4와 병합 시 MASLD 사망률 예측 향상'],
+  ['RAAS','Renin-Angiotensin-Aldosterone System — 레닌-안지오텐신-알도스테론계'],
+];
+
+function buildAbbr() {
+  const items = abbrs.slice().sort((a, b) => a[0].localeCompare(b[0]));
+  const html = items.map(a =>
+    `<div class="abbr-item" data-term="${a[0].toLowerCase()}" data-def="${a[1].toLowerCase()}">
+      <span class="abbr-term">${a[0]}</span>
+      <span class="abbr-def">${a[1]}</span>
+    </div>`).join('');
+  document.getElementById('abbr-grid-drop').innerHTML = html;
+  const mg = document.getElementById('abbr-main-grid');
+  if (mg) mg.innerHTML = html;
+  document.getElementById('abbr-grid-drop').innerHTML = html;
+  document.getElementById('abbr-count').textContent = abbrs.length;
+}
+
+function positionDropdown() {
+  const inp = document.getElementById('abbr-input');
+  const drop = document.getElementById('abbr-dropdown');
+  const rect = inp.getBoundingClientRect();
+  const dropW = 480;
+  let left = rect.right - dropW;
+  if (left < 8) left = 8;
+  drop.style.top = (rect.bottom + 4) + 'px';
+  drop.style.left = left + 'px';
+}
+
+function filterAbbr(val) {
+  const v = val.toLowerCase().trim();
+  const drop = document.getElementById('abbr-dropdown');
+  const items = document.querySelectorAll('#abbr-grid-drop .abbr-item');
+  if (!v) { drop.style.display = 'none'; document.getElementById('abbr-count').textContent = abbrs.length; return; }
+  positionDropdown();
+  drop.style.display = 'block';
+  let visible = 0;
+  items.forEach(el => {
+    const show = el.dataset.term.startsWith(v);
+    el.style.display = show ? '' : 'none';
+    if (show) visible++;
   });
+  document.getElementById('abbr-count').textContent = visible + '/' + abbrs.length;
+}
+
+document.addEventListener('click', e => {
+  const inp = document.getElementById('abbr-input');
+  const drop = document.getElementById('abbr-dropdown');
+  if (inp && !inp.contains(e.target) && drop && !drop.contains(e.target)) drop.style.display = 'none';
 });
 
-// Toggle section
-function toggleSection(header) {
-  const body = header.nextElementSibling;
-  const btn = header.querySelector('.toggle-btn');
-  if (!body || !body.classList.contains('section-body')) return;
-  const isOpen = !body.classList.contains('collapsed');
-  if (isOpen) {
-    body.style.maxHeight = body.scrollHeight + 'px';
-    requestAnimationFrame(() => {
-      body.style.maxHeight = body.scrollHeight + 'px';
-      requestAnimationFrame(() => {
-        body.classList.add('collapsed');
-        body.style.maxHeight = '0';
-      });
-    });
-    btn.classList.add('collapsed');
-    header.setAttribute('aria-expanded', 'false');
-  } else {
-    body.classList.remove('collapsed');
-    body.style.maxHeight = body.scrollHeight + 'px';
-    btn.classList.remove('collapsed');
-    header.setAttribute('aria-expanded', 'true');
-    setTimeout(() => { body.style.maxHeight = '9999px'; }, 360);
-  }
-}
-
-function collapseAll() {
-  document.querySelectorAll('.section-header').forEach(h => {
-    const body = h.nextElementSibling;
-    const btn = h.querySelector('.toggle-btn');
-    if (!body || body.classList.contains('collapsed')) return;
-    body.style.maxHeight = body.scrollHeight + 'px';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        body.classList.add('collapsed');
-        body.style.maxHeight = '0';
-      });
-    });
-    if (btn) btn.classList.add('collapsed');
-    h.setAttribute('aria-expanded', 'false');
-  });
-}
-
-function expandAll() {
-  document.querySelectorAll('.section-header').forEach(h => {
-    const body = h.nextElementSibling;
-    const btn = h.querySelector('.toggle-btn');
-    if (!body || !body.classList.contains('collapsed')) return;
-    body.classList.remove('collapsed');
-    body.style.maxHeight = body.scrollHeight + 'px';
-    if (btn) btn.classList.remove('collapsed');
-    h.setAttribute('aria-expanded', 'true');
-    setTimeout(() => { body.style.maxHeight = '9999px'; }, 360);
-  });
-}
-
-// 초기 로드 시 모든 섹션 접힌 상태로 시작 (애니메이션 없이)
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.section-body').forEach(body => {
-    body.style.transition = 'none';
-    body.style.maxHeight = '0';
-    body.classList.add('collapsed');
-  });
-  document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.add('collapsed'));
-  document.querySelectorAll('.section-header').forEach(h => h.setAttribute('aria-expanded', 'false'));
-  // 트랜지션 복원
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    document.querySelectorAll('.section-body').forEach(body => {
-      body.style.transition = '';
-    });
-  }));
-});
+buildAbbr();
 </script>
 </body>
 </html>

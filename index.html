@@ -24,13 +24,14 @@
     --loe-1: #9a6700;
     --loe-2: #1a7f37;
     --loe-3: #57606a;
+    --fscale: 1;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
-    font-size: 13px;
+    font-size: calc(13px * var(--fscale, 1));
     line-height: 1.5;
     min-height: 100vh;
   }
@@ -51,15 +52,15 @@
   .logo-badge {
     background: #1a7f37;
     color: #fff;
-    font-size: 10px;
+    font-size: calc(10px * var(--fscale, 1));
     font-weight: 700;
     padding: 3px 8px;
     border-radius: 4px;
     letter-spacing: 0.5px;
   }
   header h1 { font-size: 20px; font-weight: 700; color: var(--text); }
-  .meta { color: var(--text2); font-size: 11px; }
-  .source-link { color: var(--accent2); font-size: 11px; text-decoration: none; }
+  .meta { color: var(--text2); font-size: calc(11px * var(--fscale, 1)); }
+  .source-link { color: var(--accent2); font-size: calc(11px * var(--fscale, 1)); text-decoration: none; }
   .source-link:hover { text-decoration: underline; }
 
   /* ── TABS ── */
@@ -73,10 +74,19 @@
     scrollbar-width: none;
   }
   .tab-bar::-webkit-scrollbar { display: none; }
+  .font-zoom-btn {
+    display: flex; align-items: center; gap: 3px; flex-shrink: 0;
+    margin: 4px 4px 4px 6px; padding: 5px 10px;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--accent2); font-size: calc(11px * var(--fscale, 1)); font-weight: 700;
+    cursor: pointer; user-select: none; white-space: nowrap; transition: background .15s;
+  }
+  .font-zoom-btn:hover { background: var(--border); }
+  .font-zoom-btn .fz-icon { font-size: calc(12px * var(--fscale, 1)); }
   .tab-bar-inner { width: 100%; max-width: 900px; display: flex; align-items: center; justify-content: center; gap: 2px; }
   .tab {
     padding: 8px 14px;
-    font-size: 12px;
+    font-size: calc(12px * var(--fscale, 1));
     color: var(--text2);
     cursor: pointer;
     border-bottom: 2px solid transparent;
@@ -110,7 +120,7 @@
   .card-header {
     background: var(--surface2);
     padding: 8px 12px;
-    font-size: 12px;
+    font-size: calc(12px * var(--fscale, 1));
     font-weight: 600;
     color: var(--text2);
     text-transform: uppercase;
@@ -123,7 +133,7 @@
     user-select: none;
   }
   .card-header .ch-title { display: flex; align-items: center; gap: 8px; }
-  .card-header .toggle { font-size: 14px; transition: transform .2s; }
+  .card-header .toggle { font-size: calc(14px * var(--fscale, 1)); transition: transform .2s; }
   .card-header.open .toggle { transform: rotate(180deg); }
   .card-body { padding: 10px 12px; }
   .card-body.collapsed { display: none; }
@@ -131,19 +141,19 @@
   /* ── STAT ── */
   .stat-row { display: flex; gap: 8px; margin-bottom: 10px; }
   .stat-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; flex: 1; text-align: center; }
-  .stat-val { font-size: 20px; font-weight: 700; color: var(--accent2); }
-  .stat-lbl { font-size: 10px; color: var(--text2); margin-top: 2px; }
+  .stat-val { font-size: calc(20px * var(--fscale, 1)); font-weight: 700; color: var(--accent2); }
+  .stat-lbl { font-size: calc(10px * var(--fscale, 1)); color: var(--text2); margin-top: 2px; }
 
   /* ── GRADE BADGES ── */
-  .grade { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; white-space: nowrap; position: relative; cursor: help; }
+  .grade { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: calc(10px * var(--fscale, 1)); font-weight: 700; white-space: nowrap; position: relative; cursor: help; }
   .grade-strong { background: #dafbe1; color: #116329; border: 1px solid #1a7f37; }
   .grade-weak { background: #ddf4ff; color: #0550ae; border: 1px solid #0550ae; }
   .grade-open { background: #f6f8fa; color: #57606a; border: 1px solid #d0d7de; }
-  .loe-1 { background: #fff8c5; color: #7d4e00; border: 1px solid #9a6700; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
-  .loe-2 { background: #dafbe1; color: #116329; border: 1px solid #1a7f37; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
-  .loe-3 { background: #f6f8fa; color: #57606a; border: 1px solid #d0d7de; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
-  .loe-4 { background: #fff8c5; color: #9a6700; border: 1px solid #9a6700; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
-  .loe-5 { background: #ffebe9; color: #82071e; border: 1px solid #cf222e; font-size: 10px; font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-1 { background: #fff8c5; color: #7d4e00; border: 1px solid #9a6700; font-size: calc(10px * var(--fscale, 1)); font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-2 { background: #dafbe1; color: #116329; border: 1px solid #1a7f37; font-size: calc(10px * var(--fscale, 1)); font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-3 { background: #f6f8fa; color: #57606a; border: 1px solid #d0d7de; font-size: calc(10px * var(--fscale, 1)); font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-4 { background: #fff8c5; color: #9a6700; border: 1px solid #9a6700; font-size: calc(10px * var(--fscale, 1)); font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
+  .loe-5 { background: #ffebe9; color: #82071e; border: 1px solid #cf222e; font-size: calc(10px * var(--fscale, 1)); font-weight: 600; display: inline-block; padding: 1px 5px; border-radius: 3px; }
 
   /* ── TOOLTIP ── */
   .grade::after {
@@ -155,7 +165,7 @@
     transform: translateX(-50%);
     background: #1f2328;
     color: #e6edf3;
-    font-size: 11px;
+    font-size: calc(11px * var(--fscale, 1));
     font-weight: 400;
     line-height: 1.5;
     padding: 6px 10px;
@@ -184,34 +194,34 @@
   .rec-item { padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-start; }
   .rec-item:last-child { border-bottom: none; }
   .rec-badges { display: flex; gap: 4px; flex-shrink: 0; margin-top: 1px; flex-wrap: nowrap; }
-  .rec-text { font-size: 12px; color: var(--text); line-height: 1.55; }
+  .rec-text { font-size: calc(12px * var(--fscale, 1)); color: var(--text); line-height: 1.55; }
   .rec-text strong { color: var(--accent2); }
-  .stmt-item { padding: 7px 0 7px 10px; border-left: 3px solid var(--border); margin-bottom: 5px; font-size: 12px; color: var(--text2); line-height: 1.55; }
+  .stmt-item { padding: 7px 0 7px 10px; border-left: 3px solid var(--border); margin-bottom: 5px; font-size: calc(12px * var(--fscale, 1)); color: var(--text2); line-height: 1.55; }
 
   /* ── ALERT ── */
-  .alert { padding: 8px 12px; border-radius: 6px; font-size: 12px; margin: 8px 0; display: flex; gap: 8px; align-items: flex-start; }
+  .alert { padding: 8px 12px; border-radius: 6px; font-size: calc(12px * var(--fscale, 1)); margin: 8px 0; display: flex; gap: 8px; align-items: flex-start; }
   .alert-danger { background: #ffebe9; border-left: 3px solid var(--red); color: #82071e; }
   .alert-info { background: #ddf4ff; border-left: 3px solid var(--accent2); color: #0550ae; }
   .alert-warn { background: #fff8c5; border-left: 3px solid var(--yellow); color: #7d4e00; }
   .alert-success { background: #dafbe1; border-left: 3px solid var(--green); color: #116329; }
 
   /* ── TABLE ── */
-  .tbl { width: 100%; border-collapse: collapse; font-size: 11px; }
-  .tbl th { background: var(--surface2); color: var(--text2); padding: 6px 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; text-align: left; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: calc(11px * var(--fscale, 1)); }
+  .tbl th { background: var(--surface2); color: var(--text2); padding: 6px 8px; font-size: calc(10px * var(--fscale, 1)); text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; text-align: left; }
   .tbl td { padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
   .tbl tr:last-child td { border-bottom: none; }
   .tbl tr:hover td { background: rgba(0,0,0,0.02); }
-  .tbl .section-row td { background: var(--surface2); color: var(--accent2); font-weight: 600; font-size: 11px; }
+  .tbl .section-row td { background: var(--surface2); color: var(--accent2); font-weight: 600; font-size: calc(11px * var(--fscale, 1)); }
 
   /* ── ACCORDION ── */
   .acc { border: 1px solid var(--border); border-radius: 6px; margin-bottom: 5px; overflow: hidden; }
-  .acc-hdr { background: var(--surface2); padding: 7px 12px; font-size: 12px; font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .acc-hdr { background: var(--surface2); padding: 7px 12px; font-size: calc(12px * var(--fscale, 1)); font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
   .acc-hdr:hover { background: var(--border); }
-  .acc-hdr .acc-right { display: flex; gap: 8px; align-items: center; font-size: 11px; color: var(--text2); }
-  .acc-body { display: none; padding: 10px 12px; font-size: 12px; }
+  .acc-hdr .acc-right { display: flex; gap: 8px; align-items: center; font-size: calc(11px * var(--fscale, 1)); color: var(--text2); }
+  .acc-body { display: none; padding: 10px 12px; font-size: calc(12px * var(--fscale, 1)); }
 
   /* ── PILL ── */
-  .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: calc(10px * var(--fscale, 1)); font-weight: 600; white-space: nowrap; }
   .pill-new { background: #dafbe1; color: var(--green); }
   .pill-key { background: #ddf4ff; color: var(--accent2); }
   .pill-warn { background: #ffebe9; color: var(--red); }
@@ -224,15 +234,15 @@
 
   /* ── ABBR ── */
   .abbr-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 5px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px; }
-  .abbr-term { font-weight: 700; color: var(--accent2); font-size: 12px; font-family: 'Courier New', monospace; white-space: nowrap; }
-  .abbr-def { font-size: 11px; color: var(--text2); line-height: 1.45; }
+  .abbr-term { font-weight: 700; color: var(--accent2); font-size: calc(12px * var(--fscale, 1)); font-family: 'Courier New', monospace; white-space: nowrap; }
+  .abbr-def { font-size: calc(11px * var(--fscale, 1)); color: var(--text2); line-height: 1.45; }
 
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: #c8d0d9; border-radius: 3px; }
 
-  small { color: var(--text2); font-size: 10px; }
+  small { color: var(--text2); font-size: calc(10px * var(--fscale, 1)); }
   .danger-text { color: var(--red); }
   .success-text { color: var(--green); }
   .info-text { color: var(--accent2); }
@@ -252,27 +262,29 @@
     <div style="text-align:center;margin-top:3px;line-height:1.4">
       <a href="https://doi.org/10.1016/j.jhep.2024.04.031" class="source-link" target="_blank">Journal of Hepatology 2024;81:492–542 ↗</a>
       <span class="meta"> · Published June 2024</span><br>
-      <span style="font-size:10px;color:var(--text2);font-style:italic">This tool is not officially endorsed by EASL/EASD/EASO</span>
+      <span style="font-size: calc(10px * var(--fscale, 1));color:var(--text2);font-style:italic">This tool is not officially endorsed by EASL/EASD/EASO</span>
     </div>
   </div>
 </header>
 
 <div class="tab-bar">
   <div class="tab-bar-inner">
+    <div id="font-zoom-btn" class="font-zoom-btn" onclick="cycleFontZoom()"><span class="fz-icon">🔠</span><span id="font-zoom-label">100%</span></div>
     <div class="tab active" onclick="showTab('overview')">🏠 개요·정의</div>
     <div class="tab" onclick="showTab('screening')">🔍 선별·진단</div>
     <div class="tab" onclick="showTab('nit')">📊 비침습 검사</div>
     <div class="tab" onclick="showTab('lifestyle')">🥗 생활습관</div>
     <div class="tab" onclick="showTab('pharma')">💊 약물치료</div>
     <div class="tab" onclick="showTab('advanced')">🏥 고도 질환</div>
+    <div class="tab" onclick="showTab('abbr')">📖 약어</div>
     <div class="tab" onclick="showTab('updates')">🆕 주요 변경점</div>
     <div class="tab-abbr-wrap">
       <div style="position:relative;display:flex;align-items:center;flex-shrink:0">
-        <span style="position:absolute;left:8px;color:var(--text2);font-size:12px;pointer-events:none">🔍</span>
+        <span style="position:absolute;left:8px;color:var(--text2);font-size: calc(12px * var(--fscale, 1));pointer-events:none">🔍</span>
         <input id="abbr-input" type="text" placeholder="약어 검색" oninput="filterAbbr(this.value)"
-          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size:12px;width:130px;min-width:130px;max-width:130px;outline:none;box-sizing:border-box;"
+          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size: calc(12px * var(--fscale, 1));width:130px;min-width:130px;max-width:130px;outline:none;box-sizing:border-box;"
           onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
-        <span id="abbr-count" style="position:absolute;right:7px;font-size:10px;color:var(--text2);pointer-events:none"></span>
+        <span id="abbr-count" style="position:absolute;right:7px;font-size: calc(10px * var(--fscale, 1));color:var(--text2);pointer-events:none"></span>
       </div>
       <div id="abbr-dropdown" style="display:none;position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;width:480px;max-height:360px;overflow-y:auto;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.12)">
         <div id="abbr-grid-drop" style="display:grid;grid-template-columns:1fr"></div>
@@ -341,7 +353,7 @@
     <div class="card-body collapsed">
       <div class="grid2">
         <div>
-          <div style="font-weight:600;font-size:12px;color:var(--accent2);margin-bottom:6px">간 관련 사망률 (1,000 person-years)</div>
+          <div style="font-weight:600;font-size: calc(12px * var(--fscale, 1));color:var(--accent2);margin-bottom:6px">간 관련 사망률 (1,000 person-years)</div>
           <table class="tbl">
             <tr><th>조직학적 단계</th><th>간경변 사망</th><th>HCC</th></tr>
             <tr><td>단순 지방증</td><td>1.2</td><td>0.7</td></tr>
@@ -351,7 +363,7 @@
           </table>
         </div>
         <div>
-          <div style="font-weight:600;font-size:12px;color:var(--accent2);margin-bottom:6px">섬유화 진행 주요 위험인자</div>
+          <div style="font-weight:600;font-size: calc(12px * var(--fscale, 1));color:var(--accent2);margin-bottom:6px">섬유화 진행 주요 위험인자</div>
           <ul class="rec-list">
             <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🔴 <strong>제2형 당뇨</strong> — 가장 강력한 독립 위험인자 (HR 1.69 섬유화 진행)</div></li>
             <li class="rec-item" style="border:none;padding:4px 0"><div class="rec-text">🔴 <strong>복부 비만</strong> — 내장지방 분포가 핵심</div></li>
@@ -745,7 +757,7 @@
           <div class="grid2" style="gap:10px">
             <div>
               <div style="color:var(--red);font-weight:600;margin-bottom:6px">❌ 회피</div>
-              <ul style="font-size:12px;line-height:2;list-style:none">
+              <ul style="font-size: calc(12px * var(--fscale, 1));line-height:2;list-style:none">
                 <li>• 가당 음료 (과당, 청량음료)</li>
                 <li>• 적색육·가공육</li>
                 <li>• 초가공식품 (포화지방·당류 고함유)</li>
@@ -755,7 +767,7 @@
             </div>
             <div>
               <div style="color:var(--green);font-weight:600;margin-bottom:6px">✅ 권장</div>
-              <ul style="font-size:12px;line-height:2;list-style:none">
+              <ul style="font-size: calc(12px * var(--fscale, 1));line-height:2;list-style:none">
                 <li>• 올리브유·채소·과일 (주스 제외)</li>
                 <li>• 견과류·두류·통곡물</li>
                 <li>• 생선·가금류 (가공 없는 것)</li>
@@ -789,7 +801,7 @@
             <div class="acc-right"><span>▸</span></div>
           </div>
           <div class="acc-body">
-            <ul style="font-size:12px;line-height:1.8;list-style:none">
+            <ul style="font-size: calc(12px * var(--fscale, 1));line-height:1.8;list-style:none">
               <li>• <strong>유산소 운동</strong>: 간 지방증 감소 탁월</li>
               <li>• <strong>저항 운동</strong>: 근육량 유지 + 지방증 개선</li>
               <li>• <strong>HIIT</strong>: 중강도 지속 운동과 동등</li>
@@ -1219,7 +1231,7 @@
           <div class="acc-right"><span>▸</span></div>
         </div>
         <div class="acc-body">
-          <ul style="font-size:12px;line-height:2;list-style:none">
+          <ul style="font-size: calc(12px * var(--fscale, 1));line-height:2;list-style:none">
             <li>• 과거력 (심혈관 증상·병력)</li>
             <li>• 안정 시 12유도 심전도</li>
             <li>• 경흉부 심초음파 (좌심실 기능, 폐동맥압)</li>
@@ -1232,7 +1244,7 @@
           <div class="acc-right"><span>▸</span></div>
         </div>
         <div class="acc-body">
-          <ul style="font-size:12px;line-height:2;list-style:none">
+          <ul style="font-size: calc(12px * var(--fscale, 1));line-height:2;list-style:none">
             <li>• <strong>도부타민 부하 심초음파</strong> (또는 동등 검사) — 1차 선택</li>
             <li>• 심장 자기공명 부하 영상 — 대안</li>
             <li>• 관상동맥 CT 혈관조영(CCTA) — 대안</li>
@@ -1247,7 +1259,7 @@
           <div class="acc-right"><span>▸</span></div>
         </div>
         <div class="acc-body">
-          <ul style="font-size:12px;line-height:2;list-style:none">
+          <ul style="font-size: calc(12px * var(--fscale, 1));line-height:2;list-style:none">
             <li>• 심장내과 의뢰</li>
             <li>• CCTA 또는 관상동맥 조영술</li>
             <li>• 필요 시 혈관재건술 (경피적 관상동맥중재술 또는 관상동맥우회술)</li>
@@ -1258,7 +1270,7 @@
       </div>
 
       <div class="sec-sep"></div>
-      <div style="font-weight:600;font-size:12px;color:var(--accent2);margin-bottom:6px">이식 전 스크리닝 체크리스트 (Table 11)</div>
+      <div style="font-weight:600;font-size: calc(12px * var(--fscale, 1));color:var(--accent2);margin-bottom:6px">이식 전 스크리닝 체크리스트 (Table 11)</div>
       <table class="tbl">
         <tr><th>항목</th><th>권고 내용</th></tr>
         <tr><td><strong>T2D</strong></td><td>IFG/IGT·T2D 선별 (OGTT, HbA1c); 이식 전 혈당 최적화; 체중 감량 효과 있는 약제 우선 (SGLT2i, GLP-1 RA)</td></tr>
@@ -1301,6 +1313,14 @@
 
 </div><!-- /advanced -->
 
+<!-- ═══════════════ ABBR ═══════════════ -->
+<div id="tab-abbr" class="panel">
+  <div class="alert alert-info" style="margin-bottom:10px">
+    <span>🔍</span>
+    <div>상단 검색창에서 약어를 검색하거나 아래 전체 목록을 확인하세요.</div>
+  </div>
+  <div id="abbr-main-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px"></div>
+</div>
 
 <!-- ═══════════════ UPDATES ═══════════════ -->
 <div id="tab-updates" class="panel">
@@ -1340,7 +1360,7 @@
     <div class="acc-body">
       <div class="grid2" style="gap:10px">
         <div>
-          <div style="font-weight:600;color:var(--accent2);margin-bottom:6px;font-size:12px">MAESTRO-NASH Phase III 주요 결과</div>
+          <div style="font-weight:600;color:var(--accent2);margin-bottom:6px;font-size: calc(12px * var(--fscale, 1))">MAESTRO-NASH Phase III 주요 결과</div>
           <table class="tbl">
             <tr><th>엔드포인트</th><th>80mg</th><th>100mg</th><th>위약</th></tr>
             <tr><td>MASH 해소 (섬유화 비악화)</td><td>~26%</td><td>~30%</td><td>~10%</td></tr>
@@ -1349,8 +1369,8 @@
           </table>
         </div>
         <div>
-          <div style="font-weight:600;color:var(--accent2);margin-bottom:6px;font-size:12px">임상 적용 핵심</div>
-          <ul style="font-size:12px;line-height:1.9;list-style:none">
+          <div style="font-weight:600;color:var(--accent2);margin-bottom:6px;font-size: calc(12px * var(--fscale, 1))">임상 적용 핵심</div>
+          <ul style="font-size: calc(12px * var(--fscale, 1));line-height:1.9;list-style:none">
             <li>✅ 비간경변 MASH + F2-F3 섬유화</li>
             <li>✅ 미국 가속 승인; 유럽 미승인(2024 기준)</li>
             <li>⚠️ 비응답자(~70–80%) 중단 기준 미확립</li>
@@ -1371,7 +1391,7 @@
       </span><div class="acc-right"><span>▸</span></div>
     </div>
     <div class="acc-body">
-      <ul style="font-size:12px;line-height:1.9;list-style:none">
+      <ul style="font-size: calc(12px * var(--fscale, 1));line-height:1.9;list-style:none">
         <li>• FIB-4 1차 → VCTE/ELF 2차 단계 접근이 공식 권고 경로로 확정</li>
         <li>• ≥65세: FIB-4 하한 임계값 1.3 → <strong>2.0</strong>으로 조정 (위양성 감소)</li>
         <li>• FIB-4 중간값(1.3–2.67): 즉시 VCTE <strong>또는</strong> 1년 중재 후 재평가 — 두 옵션 모두 허용</li>
@@ -1428,7 +1448,7 @@
     </div>
     <div class="acc-body">
       <div class="stmt-item">자동화 FIB-4 계산 + 전자 의무기록 알림 → 간전문의 의뢰율 3% → 33%↑ (당뇨/일반내과 클리닉 RCT)</div>
-      <ul style="font-size:12px;line-height:1.9;list-style:none;margin-top:8px">
+      <ul style="font-size: calc(12px * var(--fscale, 1));line-height:1.9;list-style:none;margin-top:8px">
         <li>🏥 <strong>1차 진료·당뇨병과</strong>: FIB-4 산출, 1단계 평가, 생활습관 교육</li>
         <li>💉 <strong>비만내과·내분비과</strong>: 체중 관리, GLP-1 RA·인크레틴 치료</li>
         <li>🔬 <strong>간전문의</strong>: FIB-4 ≥2.67, VCTE ≥8 kPa, 간경변, HCC 감시</li>
@@ -1449,8 +1469,8 @@
     <div class="acc-body">
       <div class="grid2" style="gap:10px">
         <div>
-          <div style="font-weight:600;color:var(--accent2);font-size:12px;margin-bottom:4px">진단·자연경과</div>
-          <ul style="font-size:11px;line-height:1.8;list-style:none;color:var(--text2)">
+          <div style="font-weight:600;color:var(--accent2);font-size: calc(12px * var(--fscale, 1));margin-bottom:4px">진단·자연경과</div>
+          <ul style="font-size: calc(11px * var(--fscale, 1));line-height:1.8;list-style:none;color:var(--text2)">
             <li>• 일차의료 적용 가능한 비용효율적 case-finding 도구</li>
             <li>• MetALD 자연경과 기술 및 신뢰할 수 있는 음주량 바이오마커</li>
             <li>• 비간경변 MASLD에서 HCC 감시 대상·도구 최적화</li>
@@ -1458,8 +1478,8 @@
           </ul>
         </div>
         <div>
-          <div style="font-weight:600;color:var(--accent2);font-size:12px;margin-bottom:4px">치료</div>
-          <ul style="font-size:11px;line-height:1.8;list-style:none;color:var(--text2)">
+          <div style="font-weight:600;color:var(--accent2);font-size: calc(12px * var(--fscale, 1));margin-bottom:4px">치료</div>
+          <ul style="font-size: calc(11px * var(--fscale, 1));line-height:1.8;list-style:none;color:var(--text2)">
             <li>• MASH 표적 약물 조기 비응답자 예측 및 중단 기준</li>
             <li>• 인크레틴 계열 + Resmetirom 병합 효과 전향적 평가</li>
             <li>• MASH 관련 간경변 단계에서의 유효 약물 개발</li>
@@ -1475,6 +1495,20 @@
 </div><!-- /main -->
 
 <script>
+const FONT_ZOOM_LEVELS = [1, 1.25, 1.5];
+let fontZoomIndex = 0;
+
+function applyFontZoom(scale) {
+  document.documentElement.style.setProperty('--fscale', scale);
+  const label = document.getElementById('font-zoom-label');
+  if (label) label.textContent = Math.round(scale * 100) + '%';
+}
+
+function cycleFontZoom() {
+  fontZoomIndex = (fontZoomIndex + 1) % FONT_ZOOM_LEVELS.length;
+  applyFontZoom(FONT_ZOOM_LEVELS[fontZoomIndex]);
+}
+
 /* ── TAB ── */
 function showTab(id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -1609,9 +1643,7 @@ function buildAbbr() {
       <span class="abbr-term">${a[0]}</span>
       <span class="abbr-def">${a[1]}</span>
     </div>`).join('');
-  document.getElementById('abbr-grid-drop').innerHTML = html;
-  const mg = document.getElementById('abbr-main-grid');
-  if (mg) mg.innerHTML = html;
+  document.getElementById('abbr-main-grid').innerHTML = html;
   document.getElementById('abbr-grid-drop').innerHTML = html;
   document.getElementById('abbr-count').textContent = abbrs.length;
 }
@@ -1636,7 +1668,7 @@ function filterAbbr(val) {
   drop.style.display = 'block';
   let visible = 0;
   items.forEach(el => {
-    const show = el.dataset.term.startsWith(v);
+    const show = el.dataset.term.startsWith(v) || el.dataset.def.includes(v);
     el.style.display = show ? '' : 'none';
     if (show) visible++;
   });
